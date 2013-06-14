@@ -16,11 +16,12 @@ function blacklist_gform_editor_js(){
 <script type='text/javascript'>
 	jQuery(document).ready(function($) {
         //Alter the setting offered for the email input type
-        fieldSettings["email"] = fieldSettings["email"] + ", .email_blacklist_setting"; // this will show all fields that Paragraph Text field shows plus my custom setting
+        fieldSettings["email"] = fieldSettings["email"] + ", .email_blacklist_setting, .email_blacklist_validation"; // this will show all fields that Paragraph Text field shows plus my custom setting
 
 		//binding to the load field settings event to initialize the checkbox
 		$(document).bind("gform_load_field_settings", function(event, field, form){
 			$("#field_email_blacklist").val(field["email_blacklist"]);
+			$("#field_email_blacklist_validation").val(field["email_blacklist_validation"]);
 		});
     });
 </script>
@@ -42,6 +43,13 @@ function blacklist_email_blacklist_settings( $position, $form_id ){
         </label>
 		<input type="text" id="field_email_blacklist" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist', this.value);">
     </li>
+    <li class="email_blacklist_validation field_setting">
+		<label for="field_email_blacklist_validation">
+            <?php _e("Blacklisted Emails Validation Message", "gravityforms"); ?>
+            <?php gform_tooltip("form_field_email_blacklist_validation"); ?>
+        </label>
+		<input type="text" id="field_email_blacklist_validation" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist_validation', this.value);">
+    </li>
     <?php
     }
 }
@@ -49,7 +57,8 @@ function blacklist_email_blacklist_settings( $position, $form_id ){
 //Filter to add a new tooltip
 add_filter('gform_tooltips', 'blacklist_add_tos_tooltips');
 function blacklist_add_tos_tooltips($tooltips){
-   $tooltips["form_field_email_blacklist"] = "<h6>Email Blacklist</h6> please enter a comma seportated list of domains you would like to block from submitting their email.";
+   $tooltips["form_field_email_blacklist"] = "<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting their email.";
+   $tooltips["form_field_email_blacklist"] = "<h6>Validation Message</h6> Please enter the validation message you would like to appear if a blacklisted email is entered.";
    return $tooltips;
 }
 
@@ -79,8 +88,13 @@ function email_blacklist_validation($validation_result) {
 
 		$validation_result['is_valid'] = false;
 		$field['failed_validation'] = true;
-		$field['validation_message'] = sprintf(__('Sorry, <strong>%s</strong> email accounts are not eligible for this form.'), $domain);
 
+		//set the validation message or use the default
+		if( empty($field["email_blacklist_validation"]) ) {
+			$field['validation_message'] = sprintf(__('Sorry, <strong>%s</strong> email accounts are not eligible for this form.'), $domain);
+		}else{
+			$field['validation_message'] = $field["email_blacklist_validation"];
+		}
 	}
 
 	$validation_result['form'] = $form;
