@@ -47,28 +47,12 @@ class Gravity_Forms_Email_Blacklist_Admin {
 	 */
 	private function __construct() {
 
-		/*
-		 * Call $plugin_slug from public plugin class.
-		 */
 		$plugin = Gravity_Forms_Email_Blacklist::get_instance();
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
-		// Load admin style sheet and JavaScript.
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
-
-		// Add the options page and menu item.
-		add_action( 'gform_addon_navigation', array( $this, 'add_plugin_admin_menu' ) );
-
-		// Add an action link pointing to the options page.
-		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_slug . '.php' );
-		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
-
-		//Actions
+		add_filter("gform_addon_navigation", array( $this, 'gravity_forms_menu'));
 		add_action( 'gform_editor_js', array( $this, 'gf_email_field_blacklist_js' ) );
 		add_action( 'gform_field_advanced_settings', array( $this, 'gf_email_field_blacklist_settings' ) );
-
-		//Filters
 		add_filter( 'gform_tooltips', array( $this, 'gf_email_field_blacklist_tooltip' ) );
 
 	}
@@ -91,97 +75,180 @@ class Gravity_Forms_Email_Blacklist_Admin {
 	}
 
 	/**
-	 * Register and enqueue admin-specific style sheet.
+	 * Add a page for this plugin to the Gravity Forms menu.
 	 *
 	 * @since     1.0.0
 	 *
-	 * @return    null    Return early if no settings page is registered.
 	 */
-	public function enqueue_admin_styles() {
+	public function gravity_forms_menu($menus) {
 
-		if ( ! isset( $this->plugin_screen_hook_suffix ) ) {
-			return;
-		}
+		$permission = current_user_can("gform_full_access");
+		if(!empty($permission))
+			$menus[] = array('name' => 'gf_emailblacklist', 'label' => __('Email Blacklist', $this->plugin_slug), "callback" =>  array( $this, 'display_plugin_gravityforms_page'), 'permission' => $has_full_access ? "gform_full_access" : "gravityforms_edit_forms", "gf_edit_forms" );
 
-		$screen = get_current_screen();
-		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), Gravity_Forms_Email_Blacklist::VERSION );
-		}
+		return $menus;
 
 	}
 
-	/**
-	 * Register and enqueue admin-specific JavaScript.
-	 *
-	 * @since     1.0.0
-	 *
-	 * @return    null    Return early if no settings page is registered.
-	 */
-	public function enqueue_admin_scripts() {
-
-		if ( ! isset( $this->plugin_screen_hook_suffix ) ) {
-			return;
-		}
-
-		$screen = get_current_screen();
-		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Gravity_Forms_Email_Blacklist::VERSION );
-		}
-
-	}
-
-	/**
-	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
-	 *
-	 * @since    1.0.0
-	 */
-	public function add_plugin_admin_menu($menu_items) {
-
-		/*
-		 * Add a settings page for this plugin to the Settings menu.
-		 *
-		 * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
-		 *
-		 *        Administration Menus: http://codex.wordpress.org/Administration_Menus
-		 *
-		 * @TODO:
-		 *
-		 * - Change 'manage_options' to the capability you see fit
-		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
-		 */
-	    $menu_items[] = array(
-			"name" => "email_blacklist_settings",
-			"label" => "Email Blacklist",
-			"callback" => "submenu_handler",
-			"permission" => "edit_posts");
-	    return $menu_items;
-
-	}
-
-	/**
-	 * Render the settings page for this plugin.
-	 *
-	 * @since    1.0.0
-	 */
-	public function display_plugin_admin_page() {
+	public function display_plugin_gravityforms_page() {
 		include_once( 'views/admin.php' );
 	}
 
-	/**
-	 * Add settings action link to the plugins page.
-	 *
-	 * @since    1.0.0
-	 */
-	public function add_action_links( $links ) {
-
-		return array_merge(
-			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', $this->plugin_slug ) . '</a>'
-			),
-			$links
-		);
-
+	public function form_settings_fields($form) {
+	    return array(
+	        array(
+	            "title"  => "Simple Form Settings",
+	            "fields" => array(
+	                array(
+	                    "label"   => "My checkbox",
+	                    "type"    => "checkbox",
+	                    "name"    => "enabled",
+	                    "tooltip" => "This is the tooltip",
+	                    "choices" => array(
+	                        array(
+	                            "label" => "Enabled",
+	                            "name"  => "enabled"
+	                        )
+	                    )
+	                ),
+	                array(
+	                    "label"   => "My checkboxes",
+	                    "type"    => "checkbox",
+	                    "name"    => "checkboxgroup",
+	                    "tooltip" => "This is the tooltip",
+	                    "choices" => array(
+	                        array(
+	                            "label" => "First Choice",
+	                            "name"  => "first"
+	                        ),
+	                        array(
+	                            "label" => "Second Choice",
+	                            "name"  => "second"
+	                        ),
+	                        array(
+	                            "label" => "Third Choice",
+	                            "name"  => "third"
+	                        )
+	                    )
+	                ),
+	                array(
+	                    "label"   => "My Radio Buttons",
+	                    "type"    => "radio",
+	                    "name"    => "myradiogroup",
+	                    "tooltip" => "This is the tooltip",
+	                    "choices" => array(
+	                        array(
+	                            "label" => "First Choice"
+	                        ),
+	                        array(
+	                            "label" => "Second Choice"
+	                        ),
+	                        array(
+	                            "label" => "Third Choice"
+	                        )
+	                    )
+	                ),
+	                array(
+	                    "label"   => "My Horizontal Radio Buttons",
+	                    "type"    => "radio",
+	                    "horizontal" => true,
+	                    "name"    => "myradiogrouph",
+	                    "tooltip" => "This is the tooltip",
+	                    "choices" => array(
+	                        array(
+	                            "label" => "First Choice"
+	                        ),
+	                        array(
+	                            "label" => "Second Choice"
+	                        ),
+	                        array(
+	                            "label" => "Third Choice"
+	                        )
+	                    )
+	                ),
+	                array(
+	                    "label"   => "My Dropdown",
+	                    "type"    => "select",
+	                    "name"    => "mydropdown",
+	                    "tooltip" => "This is the tooltip",
+	                    "choices" => array(
+	                        array(
+	                            "label" => "First Choice",
+	                            "value" => "first"
+	                        ),
+	                        array(
+	                            "label" => "Second Choice",
+	                            "value" => "second"
+	                        ),
+	                        array(
+	                            "label" => "Third Choice",
+	                            "value" => "third"
+	                        )
+	                    )
+	                ),
+	                array(
+	                    "label"   => "My Text Box",
+	                    "type"    => "text",
+	                    "name"    => "mytext",
+	                    "tooltip" => "This is the tooltip",
+	                    "class"   => "medium",
+	                    "feedback_callback" => array($this, "is_valid_setting")
+	                ),
+	                array(
+	                    "label"   => "My Text Area",
+	                    "type"    => "textarea",
+	                    "name"    => "mytextarea",
+	                    "tooltip" => "This is the tooltip",
+	                    "class"   => "medium merge-tag-support mt-position-right"
+	                ),
+	                array(
+	                    "label"   => "My Hidden Field",
+	                    "type"    => "hidden",
+	                    "name"    => "myhidden"
+	                ),
+	                array(
+	                    "label"   => "My Custom Field",
+	                    "type"    => "my_custom_field_type",
+	                    "name"    => "my_custom_field"
+	                )
+	            )
+	        )
+	    );
 	}
+
+	public function settings_my_custom_field_type(){
+	    ?>
+	    <div>
+	        My custom field contains a few settings:
+	    </div>
+	    <?php
+	        $this->settings_text(
+	            array(
+	                "label" => "A textbox sub-field",
+	                "name" => "subtext",
+	                "default_value" => "change me"
+	            )
+	        );
+	        $this->settings_checkbox(
+	            array(
+	                "label" => "A checkbox sub-field",
+	                "choices" => array(
+	                    array(
+	                        "label" => "Activate",
+	                        "name" => "subcheck",
+	                        "default_value" => true
+	                    )
+
+	                )
+	            )
+	        );
+	}
+
+	public function is_valid_setting($value){
+	    return strlen($value) < 10;
+	}
+
+//--Individual Email Field Settings---------------------------------------------------
 
 	/**
 	 * Execute some javascript technicalities for the field to load correctly
