@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Gravity Forms Simple Add-On
-Plugin URI: http://www.gravityforms.com
-Description: A simple add-on to demonstrate the use of the Add-On Framework
-Version: 1.1
-Author: Rocketgenius
-Author URI: http://www.rocketgenius.com
+Plugin Name: Gravity Forms Email Blacklist
+Plugin URI: http://www.hallme.com
+Description: This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.
+Version: 1.0
+Author: Hall Internet Marketing (Tim Howe)
+Author URI: http://www.hallme.com
 
 ------------------------------------------------------------------------
 Copyright 2012-2013 Rocketgenius Inc.
@@ -30,19 +30,41 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 if (class_exists("GFForms")) {
     GFForms::include_addon_framework();
 
-    class GFSimpleAddOn extends GFAddOn {
+    class GFEmailBlacklist extends GFAddOn {
 
-        protected $_version = "1.1";
-        protected $_min_gravityforms_version = "1.7.9999";
-        protected $_slug = "simpleaddon";
-        protected $_path = "asimpleaddon/asimpleaddon.php";
+        protected $_version = "1.0";
+        protected $_min_gravityforms_version = "1.8";
+        protected $_slug = "gf_emailblacklist";
+        protected $_path = "gravityformsemailblacklist/fr_email_blacklist.php";
         protected $_full_path = __FILE__;
-        protected $_title = "Gravity Forms Simple Add-On";
-        protected $_short_title = "Simple Add-On";
+        protected $_title = "This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.";
+        protected $_short_title = "Email Blacklist";
+
+		public function pre_init(){
+            parent::pre_init();
+            // add tasks or filters here that you want to perform during the class constructor - before WordPress has been completely initialized
+        }
 
         public function init(){
             parent::init();
-            add_filter("gform_submit_button", array($this, "form_submit_button"), 10, 2);
+            add_filter( 'gform_submit_button', array($this, 'form_submit_button'), 10, 2 );
+        }
+
+        public function init_admin(){
+            parent::init_admin();
+			add_action( 'gform_editor_js', array($this, 'gf_emailblacklist_gform_editor_js') );
+			add_action( 'gform_field_advanced_settings', array($this, 'gf_email_blacklist_field_settings'), 10, 2 );
+			add_filter( 'gform_tooltips', array($this,'gf_emailblacklist_field_tooltips') );
+        }
+
+        public function init_frontend(){
+            parent::init_frontend();
+			add_filter( 'gform_validation', array($this,'gf_emailblacklist_validation') );
+        }
+
+        public function init_ajax(){
+            parent::init_ajax();
+            // add tasks or filters here that you want to perform only during ajax requests
         }
 
         // Add the text in the plugin settings to the bottom of the form if enabled for this form
@@ -56,220 +78,117 @@ if (class_exists("GFForms")) {
         }
 
 
-        public function plugin_page() {
-            ?>
-            This page appears in the Forms menu
-        <?php
-        }
+		// Add a custom setting to the tos advanced field
+		function gf_email_blacklist_field_settings( $position, $form_id=null ){
 
-        public function form_settings_fields($form) {
-            return array(
-                array(
-                    "title"  => "Simple Form Settings",
-                    "fields" => array(
-                        array(
-                            "label"   => "My checkbox",
-                            "type"    => "checkbox",
-                            "name"    => "enabled",
-                            "tooltip" => "This is the tooltip",
-                            "choices" => array(
-                                array(
-                                    "label" => "Enabled",
-                                    "name"  => "enabled"
-                                )
-                            )
-                        ),
-                        array(
-                            "label"   => "My checkboxes",
-                            "type"    => "checkbox",
-                            "name"    => "checkboxgroup",
-                            "tooltip" => "This is the tooltip",
-                            "choices" => array(
-                                array(
-                                    "label" => "First Choice",
-                                    "name"  => "first"
-                                ),
-                                array(
-                                    "label" => "Second Choice",
-                                    "name"  => "second"
-                                ),
-                                array(
-                                    "label" => "Third Choice",
-                                    "name"  => "third"
-                                )
-                            )
-                        ),
-                        array(
-                            "label"   => "My Radio Buttons",
-                            "type"    => "radio",
-                            "name"    => "myradiogroup",
-                            "tooltip" => "This is the tooltip",
-                            "choices" => array(
-                                array(
-                                    "label" => "First Choice"
-                                ),
-                                array(
-                                    "label" => "Second Choice"
-                                ),
-                                array(
-                                    "label" => "Third Choice"
-                                )
-                            )
-                        ),
-                        array(
-                            "label"   => "My Horizontal Radio Buttons",
-                            "type"    => "radio",
-                            "horizontal" => true,
-                            "name"    => "myradiogrouph",
-                            "tooltip" => "This is the tooltip",
-                            "choices" => array(
-                                array(
-                                    "label" => "First Choice"
-                                ),
-                                array(
-                                    "label" => "Second Choice"
-                                ),
-                                array(
-                                    "label" => "Third Choice"
-                                )
-                            )
-                        ),
-                        array(
-                            "label"   => "My Dropdown",
-                            "type"    => "select",
-                            "name"    => "mydropdown",
-                            "tooltip" => "This is the tooltip",
-                            "choices" => array(
-                                array(
-                                    "label" => "First Choice",
-                                    "value" => "first"
-                                ),
-                                array(
-                                    "label" => "Second Choice",
-                                    "value" => "second"
-                                ),
-                                array(
-                                    "label" => "Third Choice",
-                                    "value" => "third"
-                                )
-                            )
-                        ),
-                        array(
-                            "label"   => "My Text Box",
-                            "type"    => "text",
-                            "name"    => "mytext",
-                            "tooltip" => "This is the tooltip",
-                            "class"   => "medium"
-                        ),
-                        array(
-                            "label"   => "My Text Area",
-                            "type"    => "textarea",
-                            "name"    => "mytextarea",
-                            "tooltip" => "This is the tooltip",
-                            "class"   => "medium merge-tag-support mt-position-right"
-                        ),
-                        array(
-                            "label"   => "My Hidden Field",
-                            "type"    => "hidden",
-                            "name"    => "myhidden"
-                        ),
-                        array(
-                            "label"   => "My Custom Field",
-                            "type"    => "my_custom_field_type",
-                            "name"    => "my_custom_field"
-                        )
-                    )
-                )
-            );
-        }
+		    // Create settings on position 50 (right after Field Label)
+		    if( $position == 50 ){ ?>
 
-        public function settings_my_custom_field_type(){
-            ?>
-            <div>
-                My custom field contains a few settings:
-            </div>
-            <?php
-                $this->settings_text(
-                    array(
-                        "label" => "A textbox sub-field",
-                        "name" => "subtext",
-                        "default_value" => "change me"
-                    )
-                );
-                $this->settings_checkbox(
-                    array(
-                        "label" => "A checkbox sub-field",
-                        "choices" => array(
-                            array(
-                                "label" => "Activate",
-                                "name" => "subcheck",
-                                "default_value" => true
-                            )
+		    <li class="email_blacklist_setting field_setting">
+				<label for="field_email_blacklist">
+		            <?php _e("Blacklisted Emails", "gravityforms"); ?>
+		            <?php gform_tooltip("form_field_email_blacklist"); ?>
+		        </label>
+				<input type="text" id="field_email_blacklist" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('emailblacklist', this.value);">
+		    </li>
 
-                        )
-                    )
-                );
-        }
+		    <li class="email_blacklist_validation field_setting">
+				<label for="field_email_blacklist_validation">
+		            <?php _e("Blacklisted Emails Validation Message", "gravityforms"); ?>
+		            <?php gform_tooltip("form_field_email_blacklist_validation"); ?>
+		        </label>
+				<input type="text" id="field_email_blacklist_validation" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('emailblacklist_validation', this.value);">
+		    </li>
+		    <?php
+		    }
+		}
+
+		//Filter to add a new tooltip
+		function gf_emailblacklist_field_tooltips($tooltips){
+		   $tooltips["form_field_email_blacklist"] = "<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting their email.";
+		   $tooltips["form_field_email_blacklist_validation"] = "<h6>Validation Message</h6> Please enter the validation message you would like to appear if a blacklisted email is entered.";
+		   return $tooltips;
+		}
+
+		// Now we execute some javascript technicalitites for the field to load correctly
+		function gf_emailblacklist_gform_editor_js(){ ?>
+		<script type='text/javascript'>
+			jQuery(document).ready(function($) {
+		        //Alter the setting offered for the email input type
+		        fieldSettings["email"] = fieldSettings["email"] + ", .email_blacklist_setting, .email_blacklist_validation"; // this will show all fields that Paragraph Text field shows plus my custom setting
+
+				//binding to the load field settings event to initialize the checkbox
+				$(document).bind("gform_load_field_settings", function(event, field, form){
+					$("#field_email_blacklist").val(field["email_blacklist"]);
+					$("#field_email_blacklist_validation").val(field["email_blacklist_validation"]);
+				});
+		    });
+		</script>
+		<?php
+		}
+
+		//Add email blacklist to gforms validation function
+		function gf_emailblacklist_validation($validation_result) {
+			//collect form results
+			$form = $validation_result['form'];
+			//loop through results
+			foreach($form['fields'] as &$field) {
+
+				// if this is not an email field, skip
+				if(RGFormsModel::get_input_type($field) != 'email')
+					continue;
+
+				//get the domain from user enterd email
+				$email = explode('@', rgpost("input_{$field['id']}"));
+				$domain = rgar($email, 1);
+
+				//collect banned domains from backend and clean up
+				$ban_domains = explode(',',$field["email_blacklist"]);
+				$ban_domains = array_map('trim',$ban_domains);
+
+				// if domain is valid OR if the email field is empty, skip
+				if(!in_array($domain, $ban_domains) || empty($domain))
+					continue;
+
+				$validation_result['is_valid'] = false;
+				$field['failed_validation'] = true;
+
+				//set the validation message or use the default
+				if( empty($field["email_blacklist_validation"]) ) {
+					$field['validation_message'] = sprintf(__('Sorry, <strong>%s</strong> email accounts are not eligible for this form.'), $domain);
+				}else{
+					$field['validation_message'] = $field["email_blacklist_validation"];
+				}
+			}
+
+			$validation_result['form'] = $form;
+			return $validation_result;
+		}
 
         public function plugin_settings_fields() {
             return array(
                 array(
-                    "title"  => "Simple Add-On Settings",
+                    "title"  => "Default Settings",
                     "fields" => array(
-                        array(
-                            "name"    => "mytextbox",
-                            "tooltip" => "This is the tooltip",
-                            "label"   => "This is the label",
+						array(
+                            "label"   => "Email Blacklist",
                             "type"    => "text",
-                            "class"   => "small"
+                            "name"    => "default_emailblacklist",
+                            "tooltip" => "<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis",
+                            "class"   => "medium"
+                        ),
+						array(
+                            "label"   => "Error Message",
+                            "type"    => "text",
+                            "name"    => "default_emailblacklist_error_msg",
+                            "tooltip" => "<h6>Validation Message</h6> Please enter the validation message you would like to appear if a blacklisted email is entered. These setting can be overwritten on a per field basis",
+                            "class"   => "medium"
                         )
                     )
                 )
             );
         }
-
-        public function scripts() {
-            $scripts = array(
-                array("handle"  => "my_script_js",
-                      "src"     => $this->get_base_url() . "/js/my_script.js",
-                      "version" => $this->_version,
-                      "deps"    => array("jquery"),
-                      "strings" => array(
-                          'first'  => __("First Choice", "simpleaddon"),
-                          'second' => __("Second Choice", "simpleaddon"),
-                          'third'  => __("Third Choice", "simpleaddon")
-                      ),
-                      "enqueue" => array(
-                          array(
-                              "admin_page" => array("form_settings"),
-                              "tab"        => "simpleaddon"
-                          )
-                      )
-                ),
-
-            );
-
-            return array_merge(parent::scripts(), $scripts);
-        }
-
-        public function styles() {
-
-            $styles = array(
-                array("handle"  => "my_styles_css",
-                      "src"     => $this->get_base_url() . "/css/my_styles.css",
-                      "version" => $this->_version,
-                      "enqueue" => array(
-                          array("field_types" => array("poll"))
-                      )
-                )
-            );
-
-            return array_merge(parent::styles(), $styles);
-        }
-
-
-
     }
 
-    new GFSimpleAddOn();
+    new GFEmailBlacklist();
 }
