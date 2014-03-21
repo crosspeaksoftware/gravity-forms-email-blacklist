@@ -228,7 +228,7 @@ class Gravity_Forms_Email_Blacklist {
 	 * @since    1.0.0
 	 */
 	private static function single_activate() {
-		// @TODO: Define activation functionality here
+		// Define activation functionality here
 	}
 
 	/**
@@ -237,7 +237,7 @@ class Gravity_Forms_Email_Blacklist {
 	 * @since    1.0.0
 	 */
 	private static function single_deactivate() {
-		// @TODO: Define deactivation functionality here
+		// Define deactivation functionality here
 	}
 
 	/**
@@ -274,7 +274,7 @@ class Gravity_Forms_Email_Blacklist {
 	}
 
 	/**
-	 * Add email blacklist to gforms validation function
+	 * Checks if the submitted email is in the blacklist and throws error
 	 *
 	 * @since    1.0.0
 	 */
@@ -291,10 +291,12 @@ class Gravity_Forms_Email_Blacklist {
 			//get the domain from user enterd email
 			$email = explode('@', rgpost("input_{$field['id']}"));
 			$domain = rgar($email, 1);
+			$domain = strtolower($domain);
 
 			//collect banned domains from backend and clean up
 			$ban_domains = explode(',',$field["email_blacklist"]);
 			$ban_domains = array_map('trim',$ban_domains);
+			$ban_domains = array_map('strtolower',$ban_domains);
 
 			// if domain is valid OR if the email field is empty, skip
 			if(!in_array($domain, $ban_domains) || empty($domain))

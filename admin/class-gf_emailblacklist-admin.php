@@ -48,15 +48,6 @@ class Gravity_Forms_Email_Blacklist_Admin {
 	private function __construct() {
 
 		/*
-		 * @TODO :
-		 *
-		 * - Uncomment following lines if the admin class should only be available for super admins
-		 */
-		/* if( ! is_super_admin() ) {
-			return;
-		} */
-
-		/*
 		 * Call $plugin_slug from public plugin class.
 		 */
 		$plugin = Gravity_Forms_Email_Blacklist::get_instance();
@@ -67,7 +58,7 @@ class Gravity_Forms_Email_Blacklist_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
 		// Add the options page and menu item.
-		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
+		add_action( 'gform_addon_navigation', array( $this, 'add_plugin_admin_menu' ) );
 
 		// Add an action link pointing to the options page.
 		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_slug . '.php' );
@@ -90,15 +81,6 @@ class Gravity_Forms_Email_Blacklist_Admin {
 	 * @return    object    A single instance of this class.
 	 */
 	public static function get_instance() {
-
-		/*
-		 * @TODO :
-		 *
-		 * - Uncomment following lines if the admin class should only be available for super admins
-		 */
-		/* if( ! is_super_admin() ) {
-			return;
-		} */
 
 		// If the single instance hasn't been set, set it now.
 		if ( null == self::$instance ) {
@@ -153,7 +135,7 @@ class Gravity_Forms_Email_Blacklist_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function add_plugin_admin_menu() {
+	public function add_plugin_admin_menu($menu_items) {
 
 		/*
 		 * Add a settings page for this plugin to the Settings menu.
@@ -167,13 +149,12 @@ class Gravity_Forms_Email_Blacklist_Admin {
 		 * - Change 'manage_options' to the capability you see fit
 		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
 		 */
-		$this->plugin_screen_hook_suffix = add_options_page(
-			__( 'Gravity Forms Email Blacklist Settings', $this->plugin_slug ),
-			__( 'Gravity Forms Email Blacklist', $this->plugin_slug ),
-			'manage_options',
-			$this->plugin_slug,
-			array( $this, 'display_plugin_admin_page' )
-		);
+	    $menu_items[] = array(
+			"name" => "email_blacklist_settings",
+			"label" => "Email Blacklist",
+			"callback" => "submenu_handler",
+			"permission" => "edit_posts");
+	    return $menu_items;
 
 	}
 
@@ -241,6 +222,7 @@ class Gravity_Forms_Email_Blacklist_Admin {
 	        </label>
 			<input type="text" id="field_email_blacklist" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist', this.value);">
 	    </li>
+
 	    <li class="email_blacklist_validation field_setting">
 			<label for="field_email_blacklist_validation">
 	            <?php _e("Blacklisted Emails Validation Message", "gravityforms"); ?>
