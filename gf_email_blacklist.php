@@ -34,8 +34,8 @@ if (class_exists("GFForms")) {
 
         protected $_version = "1.0";
         protected $_min_gravityforms_version = "1.8";
-        protected $_slug = "gf_emailblacklist";
-        protected $_path = "gravityformsemailblacklist/fr_email_blacklist.php";
+        protected $_slug = "gf_email_blacklist";
+        protected $_path = "gravityformsemailblacklist/gf_email_blacklist.php";
         protected $_full_path = __FILE__;
         protected $_title = "This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.";
         protected $_short_title = "Email Blacklist";
@@ -89,7 +89,7 @@ if (class_exists("GFForms")) {
 		            <?php _e("Blacklisted Emails", "gravityforms"); ?>
 		            <?php gform_tooltip("form_field_email_blacklist"); ?>
 		        </label>
-				<input type="text" id="field_email_blacklist" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('emailblacklist', this.value);">
+				<input type="text" id="field_email_blacklist" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist', this.value);">
 		    </li>
 
 		    <li class="email_blacklist_validation field_setting">
@@ -97,7 +97,7 @@ if (class_exists("GFForms")) {
 		            <?php _e("Blacklisted Emails Validation Message", "gravityforms"); ?>
 		            <?php gform_tooltip("form_field_email_blacklist_validation"); ?>
 		        </label>
-				<input type="text" id="field_email_blacklist_validation" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('emailblacklist_validation', this.value);">
+				<input type="text" id="field_email_blacklist_validation" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist_validation', this.value);">
 		    </li>
 		    <?php
 		    }
@@ -143,7 +143,18 @@ if (class_exists("GFForms")) {
 				$domain = rgar($email, 1);
 
 				//collect banned domains from backend and clean up
-				$ban_domains = explode(',',$field["email_blacklist"]);
+				if( !empty($field["email_blacklist"]) ){ //collect per form settings
+					$ban_domains = $field["email_blacklist"];
+								var_dump($ban_domains);
+				}elseif( get_option('gravityformsaddon_'.$this->_slug.'_settings') ){ //collect default settings
+					$ban_domains = get_option('gravityformsaddon_'.$this->_slug.'_settings');
+					$ban_domains = $ban_domains['default_emailblacklist'];
+				}else{
+					//no else value
+				}
+
+				//create array of banned domains
+				$ban_domains = explode(',',$ban_domains);
 				$ban_domains = array_map('trim',$ban_domains);
 
 				// if domain is valid OR if the email field is empty, skip
@@ -154,11 +165,15 @@ if (class_exists("GFForms")) {
 				$field['failed_validation'] = true;
 
 				//set the validation message or use the default
-				if( empty($field["email_blacklist_validation"]) ) {
-					$field['validation_message'] = sprintf(__('Sorry, <strong>%s</strong> email accounts are not eligible for this form.'), $domain);
+				if( !empty($field["email_blacklist_validation"]) ) {
+					$validation_message = $field["email_blacklist_validation"];
+				}elseif( get_option('gravityformsaddon_'.$this->_slug.'_settings')  ){
+					$validation_message = get_option('gravityformsaddon_'.$this->_slug.'_settings');
+					$validation_message = $validation_message['default_emailblacklist_error_msg'];
 				}else{
-					$field['validation_message'] = $field["email_blacklist_validation"];
+					$validation_message = sprintf(__('Sorry, <strong>%s</strong> email accounts are not eligible for this form.'), $domain);
 				}
+				$field['validation_message'] = $validation_message;
 			}
 
 			$validation_result['form'] = $form;
