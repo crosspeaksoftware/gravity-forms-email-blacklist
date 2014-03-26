@@ -105,7 +105,7 @@ if (class_exists("GFForms")) {
 
 		//Filter to add a new tooltip
 		function gf_emailblacklist_field_tooltips($tooltips){
-		   $tooltips["form_field_email_blacklist"] = "<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting their email.";
+		   $tooltips["form_field_email_blacklist"] = "<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting. Enter 'none' if you would like to override the default blacklist settings.";
 		   $tooltips["form_field_email_blacklist_validation"] = "<h6>Validation Message</h6> Please enter the validation message you would like to appear if a blacklisted email is entered.";
 		   return $tooltips;
 		}
