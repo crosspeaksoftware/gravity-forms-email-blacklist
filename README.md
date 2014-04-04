@@ -1,7 +1,5 @@
-gravityforms-emailblacklist
-===========================
 === Plugin Name ===
-Contributors: timbhowe
+Contributors: hallme
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
 Requires at least: 3.8
