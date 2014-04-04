@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: timbhowe
+Contributors: hallme
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 3.8
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms Email Blacklist
 Plugin URI: http://www.hallme.com
 Description: This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.
-Version: 1.0
+Version: 1.1
 Author: Hall Internet Marketing (Tim Howe)
 Author URI: http://www.hallme.com
 
@@ -32,7 +32,7 @@ if (class_exists("GFForms")) {
 
     class GFEmailBlacklist extends GFAddOn {
 
-        protected $_version = "1.0";
+        protected $_version = "1.1";
         protected $_min_gravityforms_version = "1.8";
         protected $_slug = "gf_email_blacklist";
         protected $_path = "gravityformsemailblacklist/gf_email_blacklist.php";
