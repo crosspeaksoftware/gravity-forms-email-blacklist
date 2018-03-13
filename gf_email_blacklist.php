@@ -126,6 +126,11 @@ if (class_exists("GFForms")) {
 		</script>
 		<?php
 		}
+	    
+	    protected function gf_emailblacklist_clean($string) {
+ 			return strtolower(trim($string));
+ 		}
+ 
 
 		//Add email blacklist to gforms validation function
 		function gf_emailblacklist_validation($validation_result) {
@@ -140,7 +145,7 @@ if (class_exists("GFForms")) {
 
 				//get the domain from user enterd email
 				$email = explode('@', rgpost("input_{$field['id']}"));
-				$domain = rgar($email, 1);
+				$domain = strtolower(rgar($email, 1));
 
 				//collect banned domains from backend and clean up
 				if( !empty($field["email_blacklist"]) ){ //collect per form settings
@@ -155,7 +160,7 @@ if (class_exists("GFForms")) {
 
 				//create array of banned domains
 				$ban_domains = explode(',',$ban_domains);
-				$ban_domains = array_map('trim',$ban_domains);
+				$ban_domains = array_map(array($this, 'gf_emailblacklist_clean'),$ban_domains);
 
 				// if domain is valid OR if the email field is empty, skip
 				if(!in_array($domain, $ban_domains) || empty($domain))
