@@ -36,6 +36,7 @@ TODO:
 
 = 2.0 =
 * Bug Fix: Removed 'var_dump' in validation function.
+* Added 'gf_emailblacklist_clean' function to make comparison case insensitive. Thanks to @ractoon, @rscoates.
 * Updated function to work with both email domains and specific emails.
 * Ran 'class-gfemailblacklist.php' through [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer/wiki) with [WordPress Codeing Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki).
 * Moved class to '/inlcudes/class-gfemailblacklist.php' file.

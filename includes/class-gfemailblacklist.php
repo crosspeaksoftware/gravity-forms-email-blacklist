@@ -171,8 +171,8 @@ if ( class_exists( 'GFForms' ) ) {
 				}
 
 				// Get the domain from user enterd email.
-				$email  = rgpost( "input_{$field['id']}" );
-				$domain = rgar( explode( '@', $email ), 1 );
+				$email  = gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
+				$domain = gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
 
 				// Collect banned domains from backend and clean up.
 				if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings
@@ -184,7 +184,7 @@ if ( class_exists( 'GFForms' ) ) {
 
 				// Create array of banned domains.
 				$blacklist = explode( ',', $blacklist );
-				$blacklist = array_map( 'trim', $blacklist );
+				$blacklist = array_map( array( $this, 'gf_emailblacklist_clean' ), $blacklist );
 
 				// if domain is valid OR if the email field is empty, skip
 				if ( ! in_array( $email, $blacklist, true ) && ! in_array( $domain, $blacklist, true ) ) {
@@ -208,6 +208,17 @@ if ( class_exists( 'GFForms' ) ) {
 
 			$validation_result['form'] = $form;
 			return $validation_result;
+		}
+
+		/**
+		 * Convert a sting to lowercase and remove extra whitespace. Thanks to @ractoon, @rscoates.
+		 *
+		 * @param string $string A string to sanitize
+		 *
+		 * @return string Sanitize string
+		 */
+		protected function gf_emailblacklist_clean( $string ) {
+			return strtolower( trim( $string ) );
 		}
 
 	}
