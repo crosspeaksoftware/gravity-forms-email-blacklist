@@ -14,11 +14,29 @@ Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate form the Dashboard to the 'Forms' > 'Settings' > 'Email Blacklist' to make sure it is installed.
 
+### Screenshots
+
+1. General Settings
+2. Form Settings
+3. Form Settings Updated
+4. Form Error
+
 ### Changelog
 
-## 1.1
+# 2.0
+* Bug Fix: Removed 'var_dump' in validation function.
+* Added 'gf_emailblacklist_clean' function to make comparison case insensitive. Thanks to @ractoon, @rscoates.
+* Updated function to work with both email domains and specific emails.
+* Ran 'class-gfemailblacklist.php' through PHPCS with WordPress Codeing Standards.
+* Moved class to '/inlcudes/class-gfemailblacklist.php' file.
+* Added placeholder text to fileds
+* Updated code comments.
+* Updated plugin file name.
+* Updated readme.txt and README.md
+
+# 1.1
 * Added custom validation message options to the email field under the 'Advanced' field settings
 * Added default setting for the email blacklist and validation message to the form settings area to be used on all forms with an email field.
 
-## 1.0
+# 1.0
 * Added email blacklist options to the email field under the 'Advanced' field settings

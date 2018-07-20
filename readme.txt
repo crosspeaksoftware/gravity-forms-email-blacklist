@@ -24,13 +24,12 @@ Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate form the Dashboard to the 'Forms' > 'Settings' > 'Email Blacklist' to make sure it is installed.
 
-== Frequently Asked Questions ==
-
-TODO:
-
 == Screenshots ==
 
-TODO:
+1. General Settings
+2. Form Settings
+3. Form Settings Updated
+4. Form Error
 
 == Changelog ==
 
