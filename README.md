@@ -23,6 +23,9 @@ Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. 
 
 ### Changelog
 
+# 2.1
+* Added plugin icon
+
 # 2.0
 * Bug Fix: Removed 'var_dump' in validation function.
 * Added 'gf_emailblacklist_clean' function to make comparison case insensitive. Thanks to @ractoon, @rscoates.
