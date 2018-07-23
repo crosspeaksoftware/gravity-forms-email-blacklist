@@ -171,8 +171,8 @@ if ( class_exists( 'GFForms' ) ) {
 				}
 
 				// Get the domain from user enterd email.
-				$email  = gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
-				$domain = gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
+				$email  = $this->gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
+				$domain = $this->gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
 
 				// Collect banned domains from backend and clean up.
 				if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings
