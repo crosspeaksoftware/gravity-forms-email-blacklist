@@ -1,4 +1,4 @@
-=== Gravity Forms Email Balcklist ===
+=== Gravity Forms Email Blacklist ===
 Contributors: hallme, timbhowe
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
@@ -34,6 +34,10 @@ Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. 
 == Changelog ==
 
 = 2.2 =
+* Added Author URL to GitHub Repo
+* Fixed typo in readme.txt
+
+= 2.1 =
 * Added plugin icon
 
 = 2.0 =
