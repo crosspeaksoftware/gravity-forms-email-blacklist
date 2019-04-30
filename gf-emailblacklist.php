@@ -1,34 +1,31 @@
 <?php
-/*
-Plugin Name: Gravity Forms Email Blacklist
-Plugin URI: https://wordpress.org/plugins/gravity-forms-email-blacklist/
-Description: This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.
-Version: 2.1
-Author: hallme
-Author URI: https://github.com/hallme/gravityforms-emailblacklist
+/**
+ * Plugin Name: Gravity Forms Email Blacklist
+ * Plugin URI: https://wordpress.org/plugins/gravity-forms-email-blacklist/
+ * Description: This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.
+ * Version: 2.3
+ * Author: hallme
+ * Author URI: https://github.com/hallme/gravityforms-emailblacklist
+ *
+ * @package GFEmailBlacklist
+ */
 
-------------------------------------------------------------------------
-Copyright 2012-2013 Rocketgenius Inc.
+defined( 'ABSPATH' ) || exit;
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+add_action( 'gform_loaded', array( 'GF_Simple_AddOn_Bootstrap', 'load' ), 5 );
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+class GFEmailBlacklist_Bootstrap {
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-*/
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	public static function load() {
+		if ( ! method_exists( 'GFForms', 'include_addon_framework' ) ) {
+			return;
+		}
+
+		require_once 'includes/class-gfemailblacklist.php';
+		GFAddOn::register( 'GFEmailBlacklist' );
+	}
 }
 
-// Include the main WooCommerce class.
-if ( ! class_exists( 'GFEmailBlacklist' ) ) {
-	include_once dirname( __FILE__ ) . '/includes/class-gfemailblacklist.php';
+function gf_email_blacklist_addon() {
+	return GFEmailBlacklist::get_instance();
 }
