@@ -3,8 +3,8 @@ Contributors: hallme, timbhowe
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
 Requires at least: 3.8
-Tested up to: 4.9.6
-Stable tag: 2.1
+Tested up to: 5.1.1
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,12 @@ Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. 
 4. Form Error
 
 == Changelog ==
+
+= 2.3 =
+* Updated the way the AddOn is initiated.
+* Updated code to meet PHPCS code standards for WordPress.
+* Updated version and compatibility numbers.
+* Updated readme.txt.
 
 = 2.2 =
 * Added Author URL to GitHub Repo
