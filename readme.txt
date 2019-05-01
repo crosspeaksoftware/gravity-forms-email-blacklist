@@ -34,9 +34,10 @@ Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. 
 == Changelog ==
 
 = 2.3 =
-* Updated code to meet PHPCS code standards for WordPress
-* Updated version and compatibility numbers
-* Updated readme.txt
+* Updated the way the AddOn is initiated.
+* Updated code to meet PHPCS code standards for WordPress.
+* Updated version and compatibility numbers.
+* Updated readme.txt.
 
 = 2.2 =
 * Added Author URL to GitHub Repo

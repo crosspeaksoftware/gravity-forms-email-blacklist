@@ -12,10 +12,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'gform_loaded', array( 'GF_Simple_AddOn_Bootstrap', 'load' ), 5 );
+add_action( 'gform_loaded', array( 'GFEmailBlacklist_Bootstrap', 'load' ), 5 );
 
+/**
+ * Gravity Forms Bootstrap class to laod the Add-On library and new class.
+ */
 class GFEmailBlacklist_Bootstrap {
 
+	/**
+	 * Load the Add-On class after checking for the frame work.
+	 */
 	public static function load() {
 		if ( ! method_exists( 'GFForms', 'include_addon_framework' ) ) {
 			return;
@@ -26,6 +32,11 @@ class GFEmailBlacklist_Bootstrap {
 	}
 }
 
+/**
+ * Init the class.
+ *
+ * @return object Returen the instance of the Add-On class.
+ */
 function gf_email_blacklist_addon() {
 	return GFEmailBlacklist::get_instance();
 }

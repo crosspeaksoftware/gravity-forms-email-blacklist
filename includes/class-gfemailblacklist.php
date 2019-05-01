@@ -1,4 +1,10 @@
 <?php
+/**
+ * Gravity Forms Email Blacklist Handler.
+ *
+ * @class   GFEmailBlacklist
+ * @package GFEmailBlacklist
+ */
 
 defined( 'ABSPATH' ) || exit;
 
@@ -18,7 +24,6 @@ class GFEmailBlacklist extends GFAddOn {
 	protected $_title                    = 'This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.';
 	protected $_short_title              = 'Email Blacklist';
 
-
 	private static $_instance = null;
 
 	/**
@@ -27,18 +32,10 @@ class GFEmailBlacklist extends GFAddOn {
 	 * @return GFEmailBlacklist
 	 */
 	public static function get_instance() {
-		if ( self::$_instance == null ) {
+		if ( null === self::$_instance ) {
 			self::$_instance = new GFEmailBlacklist();
 		}
 		return self::$_instance;
-	}
-
-	/**
-	 * Add tasks or filters here that you want to perform both in the backend and frontend and for ajax requests.
-	 */
-	public function init() {
-		parent::init();
-		add_filter( 'gform_submit_button', array( $this, 'form_submit_button' ), 10, 2 );
 	}
 
 	/**
@@ -58,19 +55,6 @@ class GFEmailBlacklist extends GFAddOn {
 		parent::init_frontend();
 		add_filter( 'gform_validation', array( $this, 'gf_emailblacklist_validation' ) );
 	}
-
-	/**
-	 * Add the text in the plugin settings to the bottom of the form if enabled for this form.
-	 */
-	public function form_submit_button( $button, $form ) {
-		$settings = $this->get_form_settings( $form );
-		if ( isset( $settings['enabled'] ) && true === $settings['enabled'] ) {
-			$text   = $this->get_plugin_setting( 'mytextbox' );
-			$button = "<div>{$text}</div>" . $button;
-		}
-		return $button;
-	}
-
 
 	/**
 	 * Add the additional Email Blacklist
@@ -120,8 +104,8 @@ class GFEmailBlacklist extends GFAddOn {
 		}
 
 		// Create settings on position 50 (right after Field Label).
-		if ( 50 === $position ) { ?>
-
+		if ( 50 === $position ) {
+			?>
 		<li class="email_blacklist_setting field_setting">
 			<label for="field_email_blacklist">
 				<?php esc_html_e( 'Blacklisted Emails' ); ?>
@@ -137,11 +121,16 @@ class GFEmailBlacklist extends GFAddOn {
 			</label>
 			<input type="text" id="field_email_blacklist_validation" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist_validation', this.value);" placeholder="<?php echo esc_attr( $emailblacklist_msg ); ?>">
 		</li>
-		<?php
+			<?php
 		}
 	}
 
-	// Filter to add a new tooltip.
+	/**
+	 * Add the additional tooltips to the new fields.
+	 *
+	 * @param array $tooltips tooltip associative array.
+	 * @return array modified tooltips
+	 */
 	public function gf_emailblacklist_field_tooltips( $tooltips ) {
 		$tooltips['form_field_email_blacklist']            = "<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting. Enter 'none' if you would like to override the default blacklist settings.";
 		$tooltips['form_field_email_blacklist_validation'] = '<h6>Validation Message</h6> Please enter the validation message you would like to appear if a blacklisted email is entered.';
@@ -152,7 +141,7 @@ class GFEmailBlacklist extends GFAddOn {
 	 * Inject Javascript into the form editor page for the email blacklist fields.
 	 */
 	public function gf_emailblacklist_gform_editor_js() {
-	?>
+		?>
 	<script type='text/javascript'>
 		jQuery(document).ready(function($) {
 			// Alter the setting offered for the email input type.
@@ -165,7 +154,7 @@ class GFEmailBlacklist extends GFAddOn {
 			});
 		});
 	</script>
-	<?php
+		<?php
 	}
 
 	/**
@@ -229,8 +218,7 @@ class GFEmailBlacklist extends GFAddOn {
 	/**
 	 * Convert a sting to lowercase and remove extra whitespace. Thanks to @ractoon, @rscoates.
 	 *
-	 * @param string $string A string to sanitize
-	 *
+	 * @param string $string A string to sanitize.
 	 * @return string Sanitize string
 	 */
 	protected function gf_emailblacklist_clean( $string ) {
