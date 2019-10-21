@@ -16,7 +16,7 @@ GFForms::include_addon_framework();
  */
 class GFEmailBlacklist extends GFAddOn {
 
-	protected $_version                  = '2.3';
+	protected $_version                  = '2.4';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug                     = 'gf_email_blacklist';
 	protected $_path                     = 'gravityformsemailblacklist/gf_email_blacklist.php';
@@ -178,6 +178,7 @@ class GFEmailBlacklist extends GFAddOn {
 			// Get the domain from user enterd email.
 			$email  = $this->gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
 			$domain = $this->gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
+			$tld = strstr( $domain, '.' );
 
 			// Collect banned domains from backend and clean up.
 			if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings.
@@ -189,10 +190,11 @@ class GFEmailBlacklist extends GFAddOn {
 
 			// Create array of banned domains.
 			$blacklist = explode( ',', $blacklist );
+			$blacklist = str_replace( '*', '', $blacklist );
 			$blacklist = array_map( array( $this, 'gf_emailblacklist_clean' ), $blacklist );
 
-			// if domain is valid OR if the email field is empty, skip.
-			if ( ! in_array( $email, $blacklist, true ) && ! in_array( $domain, $blacklist, true ) ) {
+			// if the email, domain or top-level domain isn't balckliested, skip.
+			if ( ! in_array( $email, $blacklist, true ) && ! in_array( $domain, $blacklist, true ) && ! in_array( $tld, $blacklist, true ) ) {
 				continue;
 			}
 
