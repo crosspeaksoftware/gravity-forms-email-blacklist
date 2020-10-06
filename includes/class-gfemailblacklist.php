@@ -160,6 +160,8 @@ class GFEmailBlacklist extends GFAddOn {
 	/**
 	 * Add email blacklist to gforms validation function.
 	 *
+	 * @resources: https://docs.gravityforms.com/using-gform-validation-hook/
+	 *
 	 * @param  array $validation_result Contains the validation result and the current.
 	 *
 	 * @return array The field validation results.
@@ -175,10 +177,15 @@ class GFEmailBlacklist extends GFAddOn {
 				continue;
 			}
 
+			// If the field is hidden by GF conditional logic, skip.
+			if ( RGFormsModel::is_field_hidden( $form, $field, array() ) ) {
+				continue;
+			}
+
 			// Get the domain from user enterd email.
 			$email  = $this->gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
 			$domain = $this->gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
-			$tld = strstr( $domain, '.' );
+			$tld    = strstr( $domain, '.' );
 
 			// Collect banned domains from backend and clean up.
 			if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings.
