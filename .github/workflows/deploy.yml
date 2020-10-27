@@ -7,6 +7,8 @@ jobs:
     name: New release
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout code
+      uses: actions/checkout@master
     - name: WordPress Plugin Deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
       env:
