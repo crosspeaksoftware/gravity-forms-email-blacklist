@@ -67,17 +67,17 @@ class GFEmailBlacklist extends GFAddOn {
 				'title'  => 'Default Settings',
 				'fields' => array(
 					array(
-						'label'   => 'Email Blacklist',
+						'label'   => __( 'Email Blacklist', 'gf-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist',
-						'tooltip' => '<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis',
+						'tooltip' => __( 'Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis', 'gf-email-blacklist'),
 						'class'   => 'medium',
 					),
 					array(
-						'label'   => 'Error Message',
+						'label'   => __( 'Error Message', 'gf-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist_error_msg',
-						'tooltip' => '<h6>Validation Message</h6> Please enter the validation message you would like to appear if a blacklisted email is entered. These setting can be overwritten on a per field basis',
+						'tooltip' => __( 'Please enter the validation message you would like to appear if a blacklisted email is entered. These setting can be overwritten on a per field basis', 'gf-email-blacklist' ),
 						'class'   => 'medium',
 					),
 				),
@@ -96,11 +96,11 @@ class GFEmailBlacklist extends GFAddOn {
 		// Get settings for placeholder text.
 		if ( get_option( 'gravityformsaddon_' . $this->_slug . '_settings' ) ) {
 			$validation_message = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
-			$emailblacklist     = __( 'Global Email Blacklist: ' ) . $validation_message['default_emailblacklist'];
-			$emailblacklist_msg = __( 'Global Error Message: ' ) . $validation_message['default_emailblacklist_error_msg'];
+			$emailblacklist     = __( 'Global Email Blacklist: ', 'gf-email-blacklist' ) . $validation_message['default_emailblacklist'];
+			$emailblacklist_msg = __( 'Global Error Message: ', 'gf-email-blacklist' ) . $validation_message['default_emailblacklist_error_msg'];
 		} else {
-			$emailblacklist     = __( 'Set Blacklist Emails' );
-			$emailblacklist_msg = __( 'Set Error Message' );
+			$emailblacklist     = __( 'Set Blacklist Emails', 'gf-email-blacklist' );
+			$emailblacklist_msg = __( 'Set Error Message', 'gf-email-blacklist' );
 		}
 
 		// Create settings on position 50 (right after Field Label).
@@ -132,8 +132,8 @@ class GFEmailBlacklist extends GFAddOn {
 	 * @return array modified tooltips
 	 */
 	public function gf_emailblacklist_field_tooltips( $tooltips ) {
-		$tooltips['form_field_email_blacklist']            = "<h6>Email Blacklist</h6> Please enter a comma separated list of domains you would like to block from submitting. Enter 'none' if you would like to override the default blacklist settings.";
-		$tooltips['form_field_email_blacklist_validation'] = '<h6>Validation Message</h6> Please enter the validation message you would like to appear if a blacklisted email is entered.';
+		$tooltips['form_field_email_blacklist']            = __( "Please enter a comma separated list of domains you would like to block from submitting. Enter 'none' if you would like to override the default blacklist settings.", 'gf-email-blacklist' );
+		$tooltips['form_field_email_blacklist_validation'] = __( 'Please enter the validation message you would like to appear if a blacklisted email is entered.', 'gf-email-blacklist' );
 		return $tooltips;
 	}
 
@@ -215,7 +215,7 @@ class GFEmailBlacklist extends GFAddOn {
 				$validation_message = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
 				$validation_message = $validation_message['default_emailblacklist_error_msg'];
 			} else {
-				$validation_message = __( 'Sorry, the email address entered is not eligible for this form.' );
+				$validation_message = __( 'Sorry, the email address entered is not eligible for this form.', 'gf-email-blacklist' );
 			}
 			$field['validation_message'] = $validation_message;
 		}
