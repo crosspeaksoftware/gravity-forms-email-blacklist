@@ -243,7 +243,19 @@ class GFEmailBlacklist extends GFAddOn {
 			} else {
 				$validation_message = __( 'Sorry, the email address entered is not eligible for this form.', 'gravity-forms-email-blacklist' );
 			}
-			$field['validation_message'] = $validation_message;
+
+			/**
+			 * Filter to allow third party plugins to set the email blacklist validation.
+			 *
+			 * @since 2.5.1
+			 * @param bool   $validation_message The custom validation method.
+			 * @param array  $field              The Field Object.
+			 * @param string $email              The email entered in the input.
+			 * @param string $domain             The full domain entered in the input.
+			 * @param string $tld                The top level domain entered in the input.
+			 * @param array  $blacklist          List of the blocked emailed/domains.
+			 */
+			$field['validation_message'] = apply_filters( 'gf_blacklist_validation_message', $validation_message, $field, $email, $domain, $tld, $blacklist );
 		}
 
 		$validation_result['form'] = $form;
