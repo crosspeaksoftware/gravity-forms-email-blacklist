@@ -53,6 +53,9 @@ Once set up these setting will be used on this form only and in place of the gen
 * Updated static setting strings to allow them to be translated.
 * Added Text Domain.
 * Added a function to Load Loads a plugin’s translated strings.
+* Added filter to allow 3rd party plugins to alter the validation message before it is output.
+* Added filter to allow 3rd party plugins to alter the is_valid check.
+* Added short circuit filter to allow 3rd party plugins to jump over a check.
 
 # 2.5 #
 * Updated documentation, readme and added instructions.
