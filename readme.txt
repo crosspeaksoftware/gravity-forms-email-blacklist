@@ -63,6 +63,9 @@ Once set up these setting will be used on this form only and in place of the gen
 
 
 = 2.5 =
+
+
+= 2.5 =
 * Updated documentation, readme and added instructions.
 * Updated version number and plugin information on compatibility and stable release.
 * Fix: Updated validation function to account for email fields hidden by conditional logic
