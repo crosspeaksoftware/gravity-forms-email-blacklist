@@ -50,7 +50,9 @@ Once set up these setting will be used on this form only and in place of the gen
 ### Changelog
 
 # 2.5.1 #
-
+* Updated static setting strings to allow them to be translated.
+* Added Text Domain.
+* Added a function to Load Loads a plugin’s translated strings.
 
 # 2.5 #
 * Updated documentation, readme and added instructions.
