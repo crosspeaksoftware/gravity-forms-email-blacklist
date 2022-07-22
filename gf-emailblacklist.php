@@ -6,7 +6,7 @@
  * Version: 2.5.1
  * Author: hallme
  * Author URI: https://github.com/hallme/gravityforms-emailblacklist
- * Text Domain: gf-email-blacklist
+ * Text Domain: gravity-forms-email-blacklist
  * Domain Path: /languages
  *
  * @package GFEmailBlacklist

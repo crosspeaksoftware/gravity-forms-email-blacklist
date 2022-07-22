@@ -67,17 +67,17 @@ class GFEmailBlacklist extends GFAddOn {
 				'title'  => 'Default Settings',
 				'fields' => array(
 					array(
-						'label'   => __( 'Email Blacklist', 'gf-email-blacklist' ),
+						'label'   => __( 'Email Blacklist', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist',
-						'tooltip' => __( 'Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis', 'gf-email-blacklist'),
+						'tooltip' => __( 'Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis', 'gravity-forms-email-blacklist'),
 						'class'   => 'medium',
 					),
 					array(
-						'label'   => __( 'Error Message', 'gf-email-blacklist' ),
+						'label'   => __( 'Error Message', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist_error_msg',
-						'tooltip' => __( 'Please enter the validation message you would like to appear if a blacklisted email is entered. These setting can be overwritten on a per field basis', 'gf-email-blacklist' ),
+						'tooltip' => __( 'Please enter the validation message you would like to appear if a blacklisted email is entered. These setting can be overwritten on a per field basis', 'gravity-forms-email-blacklist' ),
 						'class'   => 'medium',
 					),
 				),
@@ -96,11 +96,11 @@ class GFEmailBlacklist extends GFAddOn {
 		// Get settings for placeholder text.
 		if ( get_option( 'gravityformsaddon_' . $this->_slug . '_settings' ) ) {
 			$validation_message = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
-			$emailblacklist     = __( 'Global Email Blacklist: ', 'gf-email-blacklist' ) . $validation_message['default_emailblacklist'];
-			$emailblacklist_msg = __( 'Global Error Message: ', 'gf-email-blacklist' ) . $validation_message['default_emailblacklist_error_msg'];
+			$emailblacklist     = __( 'Global Email Blacklist: ', 'gravity-forms-email-blacklist' ) . $validation_message['default_emailblacklist'];
+			$emailblacklist_msg = __( 'Global Error Message: ', 'gravity-forms-email-blacklist' ) . $validation_message['default_emailblacklist_error_msg'];
 		} else {
-			$emailblacklist     = __( 'Set Blacklist Emails', 'gf-email-blacklist' );
-			$emailblacklist_msg = __( 'Set Error Message', 'gf-email-blacklist' );
+			$emailblacklist     = __( 'Set Blacklist Emails', 'gravity-forms-email-blacklist' );
+			$emailblacklist_msg = __( 'Set Error Message', 'gravity-forms-email-blacklist' );
 		}
 
 		// Create settings on position 50 (right after Field Label).
@@ -132,8 +132,8 @@ class GFEmailBlacklist extends GFAddOn {
 	 * @return array modified tooltips
 	 */
 	public function gf_emailblacklist_field_tooltips( $tooltips ) {
-		$tooltips['form_field_email_blacklist']            = __( "Please enter a comma separated list of domains you would like to block from submitting. Enter 'none' if you would like to override the default blacklist settings.", 'gf-email-blacklist' );
-		$tooltips['form_field_email_blacklist_validation'] = __( 'Please enter the validation message you would like to appear if a blacklisted email is entered.', 'gf-email-blacklist' );
+		$tooltips['form_field_email_blacklist']            = __( "Please enter a comma separated list of domains you would like to block from submitting. Enter 'none' if you would like to override the default blacklist settings.", 'gravity-forms-email-blacklist' );
+		$tooltips['form_field_email_blacklist_validation'] = __( 'Please enter the validation message you would like to appear if a blacklisted email is entered.', 'gravity-forms-email-blacklist' );
 		return $tooltips;
 	}
 
@@ -215,7 +215,7 @@ class GFEmailBlacklist extends GFAddOn {
 				$validation_message = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
 				$validation_message = $validation_message['default_emailblacklist_error_msg'];
 			} else {
-				$validation_message = __( 'Sorry, the email address entered is not eligible for this form.', 'gf-email-blacklist' );
+				$validation_message = __( 'Sorry, the email address entered is not eligible for this form.', 'gravity-forms-email-blacklist' );
 			}
 			$field['validation_message'] = $validation_message;
 		}
