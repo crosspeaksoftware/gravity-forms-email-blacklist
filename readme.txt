@@ -59,6 +59,9 @@ Once set up these setting will be used on this form only and in place of the gen
 
 === Changelog ===
 
+= 2.5.1 =
+
+
 = 2.5 =
 * Updated documentation, readme and added instructions.
 * Updated version number and plugin information on compatibility and stable release.
