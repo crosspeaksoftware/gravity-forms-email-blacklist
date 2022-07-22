@@ -42,3 +42,13 @@ class GFEmailBlacklist_Bootstrap {
 function gf_email_blacklist_addon() {
 	return GFEmailBlacklist::get_instance();
 }
+
+/**
+ * Load plugin textdomain for localization.
+ *
+ * @return void
+ */
+function gf_email_blacklist_plugin_textdomain() {
+	load_plugin_textdomain( 'gravity-forms-email-blacklist', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'init', 'gf_email_blacklist_plugin_textdomain' );
