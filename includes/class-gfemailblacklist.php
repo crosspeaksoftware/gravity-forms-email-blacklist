@@ -220,7 +220,18 @@ class GFEmailBlacklist extends GFAddOn {
 				continue;
 			}
 
-			$validation_result['is_valid'] = false;
+			/**
+			 * Filter to allow third party plugins to set the email blacklist validation.
+			 *
+			 * @since 2.5.1
+			 * @param bool   false      Default value.
+			 * @param array  $field     The Field Object.
+			 * @param string $email     The email entered in the input.
+			 * @param string $domain    The full domain entered in the input.
+			 * @param string $tld       The top level domain entered in the input.
+			 * @param array  $blacklist List of the blocked emailed/domains.
+			 */
+			$validation_result['is_valid'] = apply_filters( 'gf_blacklist_is_valid', false, $field, $email, $domain, $tld, $blacklist );
 			$field['failed_validation']    = true;
 
 			// Set the validation message or use the default.
