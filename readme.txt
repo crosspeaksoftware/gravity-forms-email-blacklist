@@ -3,8 +3,8 @@ Contributors: hallme, timbhowe
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
 Requires at least: 3.8
-Tested up to: 5.5.1
-Stable tag: 2.5
+Tested up to: 6.0.1
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
