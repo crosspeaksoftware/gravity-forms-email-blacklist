@@ -172,21 +172,6 @@ class GFEmailBlacklist extends GFAddOn {
 		// Loop through results.
 		foreach ( $form['fields'] as &$field ) {
 
-			/**
-			 * Filter to allow third party plugins short circuit blacklist validation.
-			 *
-			 * @since 2.5.1
-			 * @param bool   false      Default value.
-			 * @param array  $field     The Field Object.
-			 * @param string $email     The email entered in the input.
-			 * @param string $domain    The full domain entered in the input.
-			 * @param string $tld       The top level domain entered in the input.
-			 * @param array  $blacklist List of the blocked emailed/domains.
-			 */
-			if ( apply_filters( 'gf_blacklist_validation_short_circuit', false, $field, $email, $domain, $tld, $blacklist ) ) {
-				continue;
-			}
-
 			// If this is not an email field, skip.
 			if ( 'email' !== RGFormsModel::get_input_type( $field ) ) {
 				continue;
@@ -208,6 +193,21 @@ class GFEmailBlacklist extends GFAddOn {
 			} else { // Collect default settings.
 				$blacklist = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
 				$blacklist = $blacklist['default_emailblacklist'];
+			}
+
+			/**
+			 * Filter to allow third party plugins short circuit blacklist validation.
+			 *
+			 * @since 2.5.1
+			 * @param bool   false      Default value.
+			 * @param array  $field     The Field Object.
+			 * @param string $email     The email entered in the input.
+			 * @param string $domain    The full domain entered in the input.
+			 * @param string $tld       The top level domain entered in the input.
+			 * @param array  $blacklist List of the blocked emailed/domains.
+			 */
+			if ( apply_filters( 'gf_blacklist_validation_short_circuit', false, $field, $email, $domain, $tld, $blacklist ) ) {
+				continue;
 			}
 
 			// Create array of banned domains.
