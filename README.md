@@ -49,6 +49,9 @@ Once set up these setting will be used on this form only and in place of the gen
 
 ### Changelog
 
+# 2.5.2 #
+* Fix: Updated method for getting the TLD to make sure the domain wildcards work in the case of a sub-domain email.
+
 # 2.5.1 #
 * Updated static setting strings to allow them to be translated.
 * Added Text Domain.

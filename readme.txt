@@ -1,10 +1,10 @@
 ==== Gravity Forms Email Blacklist ====
-Contributors: hallme, timbhowe
+Contributors: hallme, timbhowe, matt-h-1, Matt Thomas
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
 Requires at least: 3.8
 Tested up to: 6.0.1
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ Once set up these setting will be used on this form only and in place of the gen
 * [Gravity Forms Documentation - Fighting Spam](https://docs.gravityforms.com/spam/)
 
 === Changelog ===
+
+= 2.5.2 =
+* Fix: Updated method for getting the TLD to make sure the domain wildcards work in the case of a sub-domain email.
 
 = 2.5.1 =
 * Updated static setting strings to allow them to be translated.
