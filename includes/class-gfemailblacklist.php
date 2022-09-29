@@ -182,10 +182,10 @@ class GFEmailBlacklist extends GFAddOn {
 				continue;
 			}
 
-			// Get the domain from user enterd email.
+			// Get the domain from user entered email.
 			$email  = $this->gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
 			$domain = $this->gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
-			$tld    = strstr( $domain, '.' );
+			$tld    = strrchr( $domain, '.' );
 
 			// Collect banned domains from backend and clean up.
 			if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings.
@@ -215,7 +215,7 @@ class GFEmailBlacklist extends GFAddOn {
 			$blacklist = str_replace( '*', '', $blacklist );
 			$blacklist = array_map( array( $this, 'gf_emailblacklist_clean' ), $blacklist );
 
-			// if the email, domain or top-level domain isn't balckliested, skip.
+			// if the email, domain or top-level domain isn't blacklisted, skip.
 			if ( ! in_array( $email, $blacklist, true ) && ! in_array( $domain, $blacklist, true ) && ! in_array( $tld, $blacklist, true ) ) {
 				continue;
 			}
