@@ -8,7 +8,7 @@ This plugin allows site admins to create a list of domains that if used in an em
 
 Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. To add settings to an individual email field just add one to the form and got to the 'Advanced Settings' tab.
 
-This plugin works by blocking either indavidual email addresses (exmple: jsmith@yahoo.com), email address domains (exmple: google.com), and/or, email address top-level domains (exmple: *.com).
+This plugin works by blocking either indavidual email addresses (example: jsmith@yahoo.com), email address domains (example: google.com), and/or, email address top-level domains (example: *.com).
 
 ### Installation
 
@@ -29,7 +29,7 @@ This plugin works by blocking either indavidual email addresses (exmple: jsmith@
 Once set up these setting will be used on all email input fields across all the Gravity Forms used on the site. They can be overridden by the individual email blacklist settings below.
 
 1. Once Logged into your site navigate to 'Forms' > 'Settings' > 'Email Blacklist'
-2. Enter the email addresses (exmple: jsmigh@gmail.com), email address domains (exmple: gmail.com), and/or, email address top-level domains (exmple: *.com) separated by commas into the 'Email Balcklist" field.
+2. Enter the email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com) separated by commas into the 'Email Blacklist" field.
 3. Enter the validation message you would like displayed to a user that try and use a blacklisted email when submitting a form into the 'Error Message' field.
 4. Click the 'Update Settings' button to save the settings.
 
@@ -38,7 +38,7 @@ Once set up these setting will be used on this form only and in place of the gen
 1. Once Logged into your site navigate to the Gravity Form you would like to update.
 2. Add or update an existing Email input filed on the form.
 3. Go to the 'Advance Settings' tab for the Email input.
-4. Enter the email addresses (exmple: jsmigh@gmail.com), email address domains (exmple: gmail.com), and/or, email address top-level domains (exmple: *.com) separated by commas into the 'Email Balcklist" field. If you enter a space this will override the general blacklist and allow all email address to be submitted.
+4. Enter the email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com) separated by commas into the 'Email Blacklist" field. If you enter a space this will override the general blacklist and allow all email address to be submitted.
 5. Enter the validation message you would like displayed to a user that try and use a blacklisted email when submitting a form into the 'Error Message' field.
 6. Click the 'Update' button to save the settings.
 
@@ -85,9 +85,9 @@ Once set up these setting will be used on this form only and in place of the gen
 * Bug Fix: Removed 'var_dump' in validation function.
 * Added 'gf_emailblacklist_clean' function to make comparison case insensitive. Thanks to @ractoon, @rscoates.
 * Updated function to work with both email domains and specific emails.
-* Ran 'class-gfemailblacklist.php' through PHPCS with WordPress Codeing Standards.
+* Ran 'class-gfemailblacklist.php' through PHPCS with WordPress Coding Standards.
 * Moved class to '/inlcudes/class-gfemailblacklist.php' file.
-* Added placeholder text to fileds
+* Added placeholder text to fields
 * Updated code comments.
 * Updated plugin file name.
 * Updated readme.txt and README.md
