@@ -98,7 +98,7 @@ Once set up these setting will be used on this form only and in place of the gen
 * Added 'gf_emailblacklist_clean' function to make comparison case insensitive. Thanks to @ractoon, @rscoates.
 * Updated function to work with both email domains and specific emails.
 * Ran 'class-gfemailblacklist.php' through [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer/wiki) with [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki).
-* Moved class to '/inlcudes/class-gfemailblacklist.php' file.
+* Moved class to '/includes/class-gfemailblacklist.php' file.
 * Added placeholder text to fields
 * Updated code comments.
 * Updated plugin file name.
