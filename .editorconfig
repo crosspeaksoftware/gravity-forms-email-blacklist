@@ -1,0 +1,26 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+[*.php]
+end_of_line = lf
+charset = utf-8
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[phpcs.xml.dist,readme.txt]
+end_of_line = lf
+charset = utf-8
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[README.md]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+
+[composer.json]
+indent_style = space
+indent_size = 4
+end_of_line = lf

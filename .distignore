@@ -3,6 +3,8 @@
 /.github
 
 .distignore
+.editorconfig
 .gitignore
 .gitattributes
 README.md
+phpcs.xml.dist
