@@ -70,7 +70,7 @@ class GFEmailBlacklist extends GFAddOn {
 						'label'   => __( 'Email Blacklist', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist',
-						'tooltip' => __( 'Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis', 'gravity-forms-email-blacklist'),
+						'tooltip' => __( 'Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis', 'gravity-forms-email-blacklist' ),
 						'class'   => 'medium',
 					),
 					array(
@@ -108,7 +108,7 @@ class GFEmailBlacklist extends GFAddOn {
 			?>
 		<li class="email_blacklist_setting field_setting">
 			<label for="field_email_blacklist">
-				<?php esc_html_e( 'Blacklisted Emails' ); ?>
+				<?php esc_html_e( 'Blacklisted Emails', 'gravity-forms-email-blacklist' ); ?>
 				<?php gform_tooltip( 'form_field_email_blacklist' ); ?>
 			</label>
 			<input type="text" id="field_email_blacklist" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist', this.value);" placeholder="<?php echo esc_attr( $emailblacklist ); ?>">
@@ -116,7 +116,7 @@ class GFEmailBlacklist extends GFAddOn {
 
 		<li class="email_blacklist_validation field_setting">
 			<label for="field_email_blacklist_validation">
-				<?php esc_html_e( 'Blacklisted Emails Validation Message' ); ?>
+				<?php esc_html_e( 'Blacklisted Emails Validation Message', 'gravity-forms-email-blacklist' ); ?>
 				<?php gform_tooltip( 'form_field_email_blacklist_validation' ); ?>
 			</label>
 			<input type="text" id="field_email_blacklist_validation" class="fieldwidth-3" size="35" onkeyup="SetFieldProperty('email_blacklist_validation', this.value);" placeholder="<?php echo esc_attr( $emailblacklist_msg ); ?>">
