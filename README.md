@@ -12,7 +12,7 @@ This plugin works by blocking either indavidual email addresses (exmple: jsmith@
 
 ### Installation
 
-1. Search for and install the 'Gravity Forms Email Blacklist' OR Upload `gravityforms-emailblacklist` to the `/wp-content/plugins/` directory.
+1. Search for and install the 'Gravity Forms Email Blacklist' OR Upload `gravity-forms-email-blacklist` to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate form the Dashboard to the 'Forms' > 'Settings' > 'Email Blacklist' to make sure it is installed.
 

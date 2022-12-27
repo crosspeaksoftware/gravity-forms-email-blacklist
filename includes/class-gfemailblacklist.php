@@ -19,7 +19,7 @@ class GFEmailBlacklist extends GFAddOn {
 	protected $_version                  = '2.5.1';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug                     = 'gf_email_blacklist';
-	protected $_path                     = 'gravityformsemailblacklist/gf_email_blacklist.php';
+	protected $_path                     = 'gravity-forms-email-blacklist/gf_emailblacklist.php';
 	protected $_full_path                = __FILE__;
 	protected $_title                    = 'This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.';
 	protected $_short_title              = 'Email Blacklist';
