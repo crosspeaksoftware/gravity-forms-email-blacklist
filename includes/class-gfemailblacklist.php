@@ -64,20 +64,21 @@ class GFEmailBlacklist extends GFAddOn {
 	public function plugin_settings_fields() {
 		return array(
 			array(
-				'title'  => 'Default Settings',
+				'title'  => 'Email Blacklist Global Settings',
+				'description' => 'Use Email Blacklist to secure your forms. If a blacklisted email is used in any email field, the form will error on submission. Globally define a list of blacklisted emails and/or domains and a custom validation message if a blacklisted email is submitted. These settings can be overridden on individual email fields in the advanced settings.\n<a href="https://www.crosspeaksoftware.com/downloads/gravity-forms-email-blacklist/">Documentation</a>',
 				'fields' => array(
 					array(
-						'label'   => __( 'Email Blacklist', 'gravity-forms-email-blacklist' ),
+						'label'   => __( 'Global Blacklisted Emails', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist',
-						'tooltip' => __( 'Please enter a comma separated list of domains you would like to block from submitting their email. These setting can be overwritten on a per field basis', 'gravity-forms-email-blacklist' ),
+						'tooltip' => __( 'Please enter a comma separated list of blacklisted domains or email addresses (ie. hotmail.com, joe@aol.com). This setting can be overridden on individual email fields in the advanced settings.' ),
 						'class'   => 'medium',
 					),
 					array(
-						'label'   => __( 'Error Message', 'gravity-forms-email-blacklist' ),
+						'label'   => __( 'Global Validation Message', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist_error_msg',
-						'tooltip' => __( 'Please enter the validation message you would like to appear if a blacklisted email is entered. These setting can be overwritten on a per field basis', 'gravity-forms-email-blacklist' ),
+						'tooltip' => __( 'Please enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.' ),
 						'class'   => 'medium',
 					),
 				),
