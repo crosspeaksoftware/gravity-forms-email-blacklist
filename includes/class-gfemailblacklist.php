@@ -133,8 +133,8 @@ class GFEmailBlacklist extends GFAddOn {
 	 * @return array modified tooltips
 	 */
 	public function gf_emailblacklist_field_tooltips( $tooltips ) {
-		$tooltips['form_field_email_blacklist']            = __( "Please enter a comma separated list of domains you would like to block from submitting. Enter 'none' if you would like to override the default blacklist settings.", 'gravity-forms-email-blacklist' );
-		$tooltips['form_field_email_blacklist_validation'] = __( 'Please enter the validation message you would like to appear if a blacklisted email is entered.', 'gravity-forms-email-blacklist' );
+		$tooltips['form_field_email_blacklist']            = __( "Please enter a comma separated list of blacklisted domains or email addresses (ie. hotmail.com, joe@aol.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.", 'gravity-forms-email-blacklist' );
+		$tooltips['form_field_email_blacklist_validation'] = __( 'Please enter an error message if a blacklisted email is submitted. This will override the globally defined error message.', 'gravity-forms-email-blacklist' );
 		return $tooltips;
 	}
 
