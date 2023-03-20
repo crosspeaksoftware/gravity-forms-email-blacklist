@@ -65,7 +65,7 @@ class GFEmailBlacklist extends GFAddOn {
 		return array(
 			array(
 				'title'  => 'Email Blacklist Global Settings',
-				'description' => 'Use Email Blacklist to secure your forms. If a blacklisted email is used in any email field, the form will error on submission. Globally define a list of blacklisted emails and/or domains and a custom validation message if a blacklisted email is submitted. These settings can be overridden on individual email fields in the advanced settings.\n<a href="https://www.crosspeaksoftware.com/downloads/gravity-forms-email-blacklist/">Documentation</a>',
+				'description' => 'Use Email Blacklist to secure your forms. If a blacklisted email is used in any email field, the form will error on submission. Globally define a list of blacklisted emails and/or domains and a custom validation message if a blacklisted email is submitted. These settings can be overridden on individual email fields in the advanced settings. <a href="https://www.crosspeaksoftware.com/downloads/gravity-forms-email-blacklist/">Documentation</a>',
 				'fields' => array(
 					array(
 						'label'   => __( 'Global Blacklisted Emails', 'gravity-forms-email-blacklist' ),
