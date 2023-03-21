@@ -38,7 +38,7 @@ Feel free to contribute on [github](https://github.com/crosspeaksoftware/gravity
 === Instructions ===
 
 == General Blacklist Settings ==
-Once set up these setting will be used on all email input fields across all the Gravity Forms used on the site. They can be overridden by the individual email blacklist settings below.
+Once set up these settings will be used on all email input fields across all the Gravity Forms used on the site. They can be overridden by the individual email blacklist settings below.
 
 1. Once Logged into your site navigate to 'Forms' > 'Settings' > 'Email Blacklist'
 2. Enter the email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com) separated by commas into the 'Email Balcklist" field.
@@ -46,7 +46,7 @@ Once set up these setting will be used on all email input fields across all the 
 4. Click the 'Update Settings' button to save the settings.
 
 == Individual Email Input Blacklist Settings ==
-Once set up these setting will be used on this form only and in place of the general blacklist settings above.
+Once set up these settings will be used on this form only and in place of the general blacklist settings above.
 1. Once Logged into your site navigate to the Gravity Form you would like to update.
 2. Add or update an existing Email input filed on the form.
 3. Go to the 'Advance Settings' tab for the Email input.
