@@ -64,21 +64,21 @@ class GFEmailBlacklist extends GFAddOn {
 	public function plugin_settings_fields() {
 		return array(
 			array(
-				'title'  => 'Email Blacklist Global Settings',
-				'description' => 'Use Email Blacklist to secure your forms. If a blacklisted email is used in any email field, the form will error on submission. You can also globally define a list of blacklisted emails and/or domains and a custom validation message if a blacklisted email is submitted. These settings can be overridden on individual email fields in the advanced settings. <a href="https://www.crosspeaksoftware.com/downloads/gravity-forms-email-blacklist/" target="_blank">View Documentation</a>',
-				'fields' => array(
+				'title'       => __( 'Email Blacklist Global Settings', 'gravity-forms-email-blacklist' ),
+				'description' => __( 'Use Email Blacklist to secure your forms. If a blacklisted email is used in any email field, the form will error on submission. You can also globally define a list of blacklisted emails and/or domains and a custom validation message if a blacklisted email is submitted. These settings can be overridden on individual email fields in the advanced settings. <a href="https://www.crosspeaksoftware.com/downloads/gravity-forms-email-blacklist/" target="_blank">View Documentation</a>', 'gravity-forms-email-blacklist' ),
+				'fields'      => array(
 					array(
 						'label'   => __( 'Global Blacklisted Emails', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist',
-						'tooltip' => __( 'Please enter a comma separated list of blacklisted domains (ex. hotmail.com), email addresses (ex. user@aol.com), and/or include the wildcard notation to block top-level domains (ex. *.com). This setting can be overridden on individual email fields in the advanced settings.' ),
+						'tooltip' => __( 'Please enter a comma separated list of blacklisted domains (ex. hotmail.com), email addresses (ex. user@aol.com), and/or include the wildcard notation to block top-level domains (ex. *.com). This setting can be overridden on individual email fields in the advanced settings.', 'gravity-forms-email-blacklist' ),
 						'class'   => 'medium',
 					),
 					array(
 						'label'   => __( 'Global Validation Message', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist_error_msg',
-						'tooltip' => __( 'Please enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.' ),
+						'tooltip' => __( 'Please enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.', 'gravity-forms-email-blacklist' ),
 						'class'   => 'medium',
 					),
 				),
