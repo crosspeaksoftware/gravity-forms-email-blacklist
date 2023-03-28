@@ -38,7 +38,7 @@ Once set up these settings will be used on this form only and in place of the gl
 
 1. Once Logged into your site navigate to the Gravity Form you would like to update.
 2. Add or update an existing email input field on the form.
-3. Go to the 'Advance Settings' tab for the 'Blacklisted Emails' input.
+3. Go to the 'Advanced Settings' tab for the 'Blacklisted Emails' input.
 4. In the 'Blacklisted Emails' input enter a comma separated list of blacklisted domains (ex. hotmail.com), email addresses (ex. user@aol.com), and/or include the wildcard notation to block top-level domains (ex. *.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.
 5. In the 'Blacklisted Emails Validation Message' input enter an error message if a blacklisted email is submitted. This will override the globally defined error message.
 6. Click the 'Save Form' button to save the settings.

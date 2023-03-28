@@ -41,7 +41,7 @@ Feel free to contribute on [github](https://github.com/crosspeaksoftware/gravity
 Once set up, these settings will be used on all email input fields across all the Gravity Forms used on the site. They can be overridden by the individual email blacklist settings below.
 
 1. Once Logged into your site navigate to 'Forms' > 'Settings' > 'Email Blacklist'
-2. In the 'Global Blacklisted Emails' input enter a comma separated list of blacklisted domains (ie. hotmail.com), email addresses (ie. user@aol.com), and/or include the wildcard notation to block the top-level domain (ie. *.com). This setting can be overridden on individual email fields in the advanced settings.
+2. In the 'Global Blacklisted Emails' input enter a comma separated list of blacklisted domains (ie. hotmail.com), email addresses (ie. user@aol.com), and/or include the wildcard notation to block top-level domains (ie. *.com). This setting can be overridden on individual email fields in the advanced settings.
 3. In the 'Global Validation Message' input enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.
 4. Click the 'Update Settings' button to save the settings.
 
@@ -50,8 +50,8 @@ Once set up these settings will be used on this form only and in place of the gl
 
 1. Once Logged into your site navigate to the Gravity Form you would like to update.
 2. Add or update an existing email input field on the form.
-3. Go to the 'Advance Settings' tab for the 'Blacklisted Emails' input.
-4. In the 'Blacklisted Emails' input enter a comma separated list of blacklisted domains (ie. hotmail.com), email addresses (ie. user@aol.com), and/or include the wildcard notation to block the top-level domain (ie. *.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.
+3. Go to the 'Advanced Settings' tab for the 'Blacklisted Emails' input.
+4. In the 'Blacklisted Emails' input enter a comma separated list of blacklisted domains (ie. hotmail.com), email addresses (ie. user@aol.com), and/or include the wildcard notation to block top-level domains (ie. *.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.
 5. In the 'Blacklisted Emails Validation Message' input enter an error message if a blacklisted email is submitted. This will override the globally defined error message.
 6. Click the 'Save Form' button to save the settings.
 
