@@ -12,11 +12,11 @@ An add-on plugin for Gravity Forms that allows the Blacklisting of specific emai
 
 === Description ===
 
-The Email Blacklist Add-on for Gravity Forms was built to help block submissions from users with generic or competitors email addresses. Prevent the user from proccessing the form and prevent non-qualified leads from being collected.
+The Email Blacklist Add-on for Gravity Forms was built to help block submissions from users with generic or competitors email addresses. Prevent the user from processing the form and stop non-qualified leads from being collected.
 
 This plugin allows site admins to create a list of domains that if used in an email field on a Gravity Form it will cause a validation error and block the submission. A default email blacklist and validation message can be created to use across all email fields. These default settings can be overridden on a per email field basis.
 
-Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. To add settings to an individual email field just add one to the form and go to the 'Advanced Settings' tab.
+Global settings can be added on 'Forms' > 'Settings' > 'Email Blacklist'. To add settings to an individual email field, select the field and navigate to the 'Advanced Settings' tab.
 
 This plugin works by blocking either individual email addresses (ex. jsmith@gmail.com), email address domains (ex. gmail.com), and/or email address top-level domains (ex. *.com).
 
