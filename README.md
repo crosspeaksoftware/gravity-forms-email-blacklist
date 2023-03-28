@@ -2,19 +2,19 @@ Gravity Forms Email Blacklist
 ================
 ### Description
 
-Email Blacklist Add-on for Gravity Forms was built to help block submissions from users with generic or competitors email addresses. Prevent the user form viewing the form's Confirmation or Notifications and remove non qualified leads from being collected.
+The Email Blacklist Add-on for Gravity Forms was built to help block submissions from users with generic or competitors email addresses. Prevent the user from proccessing the form and prevent non-qualified leads from being collected.
 
-This plugin allows site admins to create a list of domains that if used in an email field on a Gravity Form will cause a validation error and block the submission. A default email blacklist and validation message can be created to use across all form email fields. These default settings can be overridden on a per email field basis.
+This plugin allows site admins to create a list of domains that if used in an email field on a Gravity Form it will cause a validation error and block the submission. A default email blacklist and validation message can be created to use across all email fields. These default settings can be overridden on a per email field basis.
 
-Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. To add settings to an individual email field just add one to the form and got to the 'Advanced Settings' tab.
+Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. To add settings to an individual email field just add one to the form and go to the 'Advanced Settings' tab.
 
-This plugin works by blocking either indavidual email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com).
+This plugin works by blocking either individual email addresses (ex. jsmith@gmail.com), email address domains (ex. gmail.com), and/or email address top-level domains (ex. *.com).
 
 ### Installation
 
 1. Search for and install the 'Gravity Forms Email Blacklist' OR Upload `gravity-forms-email-blacklist` to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Navigate form the Dashboard to the 'Forms' > 'Settings' > 'Email Blacklist' to make sure it is installed.
+3. Navigate from the Dashboard to the 'Forms' > 'Settings' > 'Email Blacklist' to make sure it is installed.
 
 ### Screenshots
 
@@ -25,22 +25,23 @@ This plugin works by blocking either indavidual email addresses (example: jsmith
 
 ### Instructions
 
-## General Blacklist Settings
-Once set up these settings will be used on all email input fields across all the Gravity Forms used on the site. They can be overridden by the individual email blacklist settings below.
+## Global Blacklist Settings
+Once set up, these settings will be used on all email input fields across all the Gravity Forms used on the site. They can be overridden by the individual email blacklist settings below.
 
 1. Once Logged into your site navigate to 'Forms' > 'Settings' > 'Email Blacklist'
-2. Enter the email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com) separated by commas into the 'Email Blacklist" field.
-3. Enter the validation message you would like displayed to a user that try and use a blacklisted email when submitting a form into the 'Error Message' field.
+2. In the 'Global Blacklisted Emails' input enter a comma separated list of blacklisted domains (ex. hotmail.com), email addresses (ex. user@aol.com), and/or include the wildcard notation to block top-level domains (ex. *.com). This setting can be overridden on individual email fields in the advanced settings.
+3. In the 'Global Validation Message' input enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.
 4. Click the 'Update Settings' button to save the settings.
 
 ## Individual Email Input Blacklist Settings
-Once set up these settings will be used on this form only and in place of the general blacklist settings above.
+Once set up these settings will be used on this form only and in place of the global blacklist settings above.
+
 1. Once Logged into your site navigate to the Gravity Form you would like to update.
-2. Add or update an existing Email input filed on the form.
-3. Go to the 'Advance Settings' tab for the Email input.
-4. Enter the email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com) separated by commas into the 'Email Blacklist" field. If you enter a space this will override the general blacklist and allow all email address to be submitted.
-5. Enter the validation message you would like displayed to a user that try and use a blacklisted email when submitting a form into the 'Error Message' field.
-6. Click the 'Update' button to save the settings.
+2. Add or update an existing email input field on the form.
+3. Go to the 'Advance Settings' tab for the 'Blacklisted Emails' input.
+4. In the 'Blacklisted Emails' input enter a comma separated list of blacklisted domains (ex. hotmail.com), email addresses (ex. user@aol.com), and/or include the wildcard notation to block top-level domains (ex. *.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.
+5. In the 'Blacklisted Emails Validation Message' input enter an error message if a blacklisted email is submitted. This will override the globally defined error message.
+6. Click the 'Save Form' button to save the settings.
 
 ### Additional Resources
 * [Gravity Forms Documentation - Getting Started](https://docs.gravityforms.com/category/getting-started/)

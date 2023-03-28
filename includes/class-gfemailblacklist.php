@@ -71,14 +71,14 @@ class GFEmailBlacklist extends GFAddOn {
 						'label'   => __( 'Global Blacklisted Emails', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist',
-						'tooltip' => __( 'Please enter a comma separated list of blacklisted domains or email addresses (ie. hotmail.com, user@aol.com). This setting can be overridden on individual email fields in the advanced settings.' ),
+						'tooltip' => __( 'Please enter a comma separated list of blacklisted domains (ex. hotmail.com), email addresses (ex. user@aol.com), and/or include the wildcard notation to block top-level domains (ex. *.com). This setting can be overridden on individual email fields in the advanced settings.' ),
 						'class'   => 'medium',
 					),
 					array(
 						'label'   => __( 'Global Validation Message', 'gravity-forms-email-blacklist' ),
 						'type'    => 'text',
 						'name'    => 'default_emailblacklist_error_msg',
-						'tooltip' => __( 'Please enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.' ),
+						'tooltip' => __( 'Please enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.' ),
 						'class'   => 'medium',
 					),
 				),
@@ -133,7 +133,7 @@ class GFEmailBlacklist extends GFAddOn {
 	 * @return array modified tooltips
 	 */
 	public function gf_emailblacklist_field_tooltips( $tooltips ) {
-		$tooltips['form_field_email_blacklist']            = __( "Please enter a comma separated list of blacklisted domains or email addresses (ie. hotmail.com, user@aol.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.", 'gravity-forms-email-blacklist' );
+		$tooltips['form_field_email_blacklist']            = __( "Please enter a comma separated list of blacklisted domains, (ex. hotmail.com), email addresses (ex. user@aol.com), and/or include the wildcard notation to block top-level domains (ex. *.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.", 'gravity-forms-email-blacklist' );
 		$tooltips['form_field_email_blacklist_validation'] = __( 'Please enter an error message if a blacklisted email is submitted. This will override the globally defined error message.', 'gravity-forms-email-blacklist' );
 		return $tooltips;
 	}
