@@ -8,7 +8,7 @@ This plugin allows site admins to create a list of domains that if used in an em
 
 Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. To add settings to an individual email field just add one to the form and got to the 'Advanced Settings' tab.
 
-This plugin works by blocking either indavidual email addresses (example: jsmith@yahoo.com), email address domains (example: google.com), and/or, email address top-level domains (example: *.com).
+This plugin works by blocking either indavidual email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com).
 
 ### Installation
 
@@ -18,10 +18,10 @@ This plugin works by blocking either indavidual email addresses (example: jsmith
 
 ### Screenshots
 
-1. General Settings
-2. Form Settings
-3. Form Settings Updated
-4. Form Error
+1. Global Plugin Settings
+2. Email Field Settings
+3. Email Field Settings Updated
+4. Form Validation Error
 
 ### Instructions
 
@@ -48,6 +48,9 @@ Once set up these settings will be used on this form only and in place of the ge
 * [Gravity Forms Documentation - Fighting Spam](https://docs.gravityforms.com/spam/)
 
 ### Changelog
+
+# 2.5.3 #
+* Updated labels and descriptions throughout the admin settings to improve clarity.
 
 # 2.5.2 #
 * Fix: Updated method for getting the TLD to make sure the domain wildcards work in the case of a sub-domain email.

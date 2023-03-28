@@ -3,8 +3,8 @@ Contributors: crosspeak, hallme, timbhowe, matt-h-1, Matt Thomas
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
 Requires at least: 3.8
-Tested up to: 6.0.1
-Stable tag: 2.5.2
+Tested up to: 6.1.1
+Stable tag: 2.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ This plugin allows site admins to create a list of emails, domains and/or top le
 
 Default settings can be added in the  'Forms' > 'Settings' > 'Email Blacklist'. To add settings to an individual email input field just add one to the form and got to the input fields 'Advanced Settings' tab.
 
-This plugin works by blocking either individual email addresses (example: jsmith@yahoo.com), email address domains (example: google.com), and/or, email address top-level domains (example: *.com).
+This plugin works by blocking either individual email addresses (example: jsmith@gmail.com), email address domains (example: gmail.com), and/or, email address top-level domains (example: *.com).
 
 Feel free to contribute on [github](https://github.com/crosspeaksoftware/gravity-forms-email-blacklist).
 
@@ -30,14 +30,14 @@ Feel free to contribute on [github](https://github.com/crosspeaksoftware/gravity
 
 === Screenshots ===
 
-1. General Settings
-2. Form Settings
-3. Form Settings Updated
-4. Form Error
+1. Global Plugin Settings
+2. Email Field Settings
+3. Email Field Settings Updated
+4. Form Validation Error
 
 === Instructions ===
 
-== General Blacklist Settings ==
+== Global Plugin Blacklist Settings ==
 Once set up these settings will be used on all email input fields across all the Gravity Forms used on the site. They can be overridden by the individual email blacklist settings below.
 
 1. Once Logged into your site navigate to 'Forms' > 'Settings' > 'Email Blacklist'
@@ -60,6 +60,9 @@ Once set up these settings will be used on this form only and in place of the ge
 * [Gravity Forms Documentation - Fighting Spam](https://docs.gravityforms.com/spam/)
 
 === Changelog ===
+
+= 2.5.3 =
+* Updated labels and descriptions throughout the admin settings to improve clarity.
 
 = 2.5.2 =
 * Fix: Updated method for getting the TLD to make sure the domain wildcards work in the case of a sub-domain email.
