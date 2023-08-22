@@ -205,8 +205,10 @@ class GFEmailBlacklist extends GFAddOn {
 	 * @return array The field validation results.
 	 */
 	public function gf_emailblacklist_validation( $validation_result ) {
+
 		// Collect form results.
 		$form = $validation_result['form'];
+
 		// Loop through results.
 		foreach ( $form['fields'] as &$field ) {
 
@@ -220,11 +222,6 @@ class GFEmailBlacklist extends GFAddOn {
 				continue;
 			}
 
-			// Get the domain from user entered email.
-			$email  = $this->gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
-			$domain = $this->gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
-			$tld    = strrchr( $domain, '.' );
-
 			// Collect banned domains from backend and clean up.
 			if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings.
 				$blacklist = $field['email_blacklist'];
@@ -237,6 +234,11 @@ class GFEmailBlacklist extends GFAddOn {
 					$blacklist = $blacklist['default_emailblacklist'];
 				}
 			}
+
+			// Get the domain from user entered email.
+			$email  = $this->gf_emailblacklist_clean( rgpost( "input_{$field['id']}" ) );
+			$domain = $this->gf_emailblacklist_clean( rgar( explode( '@', $email ), 1 ) );
+			$tld    = strrchr( $domain, '.' );
 
 			/**
 			 * Filter to allow third party plugins short circuit blacklist validation.
