@@ -206,6 +206,14 @@ class GFEmailBlacklist extends GFAddOn {
 	 */
 	public function gf_emailblacklist_validation( $validation_result ) {
 
+		// Collect global settings.
+		$blacklist = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
+		if ( is_array( $blacklist ) && ! empty( $blacklist['default_emailblacklist'] ) ) {
+			$blacklist = $blacklist['default_emailblacklist'];
+		} else {
+			$blacklist = '';
+		}
+
 		// Collect form results.
 		$form = $validation_result['form'];
 
@@ -225,14 +233,6 @@ class GFEmailBlacklist extends GFAddOn {
 			// Collect banned domains from backend and clean up.
 			if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings.
 				$blacklist = $field['email_blacklist'];
-			} else { // Collect default settings.
-				$blacklist = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
-				// No settings, bail early...
-				if ( ! is_array( $blacklist ) || ( ! array_key_exists( 'default_emailblacklist', $blacklist ) || empty( $blacklist['default_emailblacklist'] ) ) ) {
-					return $validation_result;
-				} else {
-					$blacklist = $blacklist['default_emailblacklist'];
-				}
 			}
 
 			// Get the domain from user entered email.
@@ -259,6 +259,12 @@ class GFEmailBlacklist extends GFAddOn {
 			$blacklist = explode( ',', $blacklist );
 			$blacklist = str_replace( '*', '', $blacklist );
 			$blacklist = array_map( array( $this, 'gf_emailblacklist_clean' ), $blacklist );
+			$blacklist = array_filter( $blacklist );
+
+			// No blacklisted email, skip.
+			if ( empty( $blacklist ) ) {
+				continue;
+			}
 
 			// if the email, domain or top-level domain isn't blacklisted, skip.
 			if ( ! in_array( $email, $blacklist, true ) && ! in_array( $domain, $blacklist, true ) && ! in_array( $tld, $blacklist, true ) ) {
