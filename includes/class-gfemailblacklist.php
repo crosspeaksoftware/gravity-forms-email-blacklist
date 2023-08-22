@@ -230,7 +230,12 @@ class GFEmailBlacklist extends GFAddOn {
 				$blacklist = $field['email_blacklist'];
 			} else { // Collect default settings.
 				$blacklist = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
-				$blacklist = $blacklist['default_emailblacklist'];
+				// No settings, bail early...
+				if ( ! is_array( $blacklist ) || ( ! array_key_exists( 'default_emailblacklist', $blacklist ) || empty( $blacklist['default_emailblacklist'] ) ) ) {
+					return $validation_result;
+				} else {
+					$blacklist = $blacklist['default_emailblacklist'];
+				}
 			}
 
 			/**
