@@ -62,6 +62,10 @@ Once set up these settings will be used on this form only and in place of the gl
 
 === Changelog ===
 
+= 2.5.4 =
+* Fixed validation function to remove any empty values for the array of blacklisted emails to prevent false positives from empty email fields.
+* Added capability declination to the class to allow the plugin to work with role and capabilities plugins. 
+
 = 2.5.3 =
 * Updated labels and descriptions throughout the admin settings to improve clarity.
 
