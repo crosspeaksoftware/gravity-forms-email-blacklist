@@ -1,6 +1,6 @@
 Gravity Forms Email Blacklist
 ================
-### Description
+## Description
 
 The Email Blacklist Add-on for Gravity Forms was built to help block submissions from users with generic or competitors email addresses. Prevent the user from processing the form and stop non-qualified leads from being collected.
 
@@ -50,13 +50,17 @@ Once set up these settings will be used on this form only and in place of the gl
 
 ### Changelog
 
-# 2.5.3 #
+#### 2.5.4 
+* Fixed validation function to remove any empty values for the array of blacklisted emails to prevent false positives from empty email fields.
+* Added capability declination to the class to allow the plugin to work with role and capabilities plugins. 
+
+#### 2.5.3
 * Updated labels and descriptions throughout the admin settings to improve clarity.
 
-# 2.5.2 #
+#### 2.5.2
 * Fix: Updated method for getting the TLD to make sure the domain wildcards work in the case of a sub-domain email.
 
-# 2.5.1 #
+#### 2.5.1
 * Updated static setting strings to allow them to be translated.
 * Added Text Domain.
 * Added a function to Load Loads a plugin’s translated strings.
@@ -64,28 +68,28 @@ Once set up these settings will be used on this form only and in place of the gl
 * Added filter to allow 3rd party plugins to alter the is_valid check.
 * Added short circuit filter to allow 3rd party plugins to jump over a check.
 
-# 2.5 #
+#### 2.5
 * Updated documentation, readme and added instructions.
 * Updated version number and plugin information on compatibility and stable release.
 * Fix: Updated validation function to account for email fields hidden by conditional logic
 
-# 2.4
+#### 2.4
 * Updated the plugin to allow the use of wildcards to block whole top-level domains.
 
-# 2.3
+#### 2.3
 * Updated the way the AddOn is initiated.
 * Updated code to meet PHPCS code standards for WordPress.
 * Updated version and compatibility numbers.
 * Updated readme.txt.
 
-# 2.2
+#### 2.2
 * Added Author URL to GitHub Repo
 * Fixed typo in readme.txt
 
-# 2.1
+#### 2.1
 * Added plugin icon
 
-# 2.0
+#### 2.0
 * Bug Fix: Removed 'var_dump' in validation function.
 * Added 'gf_emailblacklist_clean' function to make comparison case insensitive. Thanks to @ractoon, @rscoates.
 * Updated function to work with both email domains and specific emails.
@@ -96,9 +100,9 @@ Once set up these settings will be used on this form only and in place of the gl
 * Updated plugin file name.
 * Updated readme.txt and README.md
 
-# 1.1
+#### 1.1
 * Added custom validation message options to the email field under the 'Advanced' field settings
 * Added default setting for the email blacklist and validation message to the form settings area to be used on all forms with an email field.
 
-# 1.0
+#### 1.0
 * Added email blacklist options to the email field under the 'Advanced' field settings
