@@ -16,7 +16,7 @@ GFForms::include_addon_framework();
  */
 class GFEmailBlacklist extends GFAddOn {
 
-	protected $_version                  = '2.5.3';
+	protected $_version                  = '2.5.4';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug                     = 'gf_email_blacklist';
 	protected $_path                     = 'gravity-forms-email-blacklist/gf_emailblacklist.php';
@@ -27,7 +27,7 @@ class GFEmailBlacklist extends GFAddOn {
 	/**
 	 * Defines the capability needed to access the Add-On settings page.
 	 *
-	 * @since  2.5.3
+	 * @since  2.5.4
 	 * @access protected
 	 * @var    string $_capabilities_settings_page The capability needed to access the Add-On settings page.
 	 */
@@ -36,7 +36,7 @@ class GFEmailBlacklist extends GFAddOn {
 	/**
 	 * Defines the capability needed to access the Add-On form settings page.
 	 *
-	 * @since  2.5.3
+	 * @since  2.5.4
 	 * @access protected
 	 * @var    string $_capabilities_form_settings The capability needed to access the Add-On form settings page.
 	 */
@@ -45,7 +45,7 @@ class GFEmailBlacklist extends GFAddOn {
 	/**
 	 * Defines the capability needed to uninstall the Add-On.
 	 *
-	 * @since  2.5.3
+	 * @since  2.5.4
 	 * @access protected
 	 * @var    string $_capabilities_uninstall The capability needed to uninstall the Add-On.
 	 */
@@ -54,7 +54,7 @@ class GFEmailBlacklist extends GFAddOn {
 	/**
 	 * Defines the capabilities needed for the Post Creation Add-On
 	 *
-	 * @since  2.5.3
+	 * @since  2.5.4
 	 * @access protected
 	 * @var    array $_capabilities The capabilities needed for the Add-On
 	 */
