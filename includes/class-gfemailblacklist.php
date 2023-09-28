@@ -207,11 +207,11 @@ class GFEmailBlacklist extends GFAddOn {
 	public function gf_emailblacklist_validation( $validation_result ) {
 
 		// Collect global settings.
-		$blacklist = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
-		if ( is_array( $blacklist ) && ! empty( $blacklist['default_emailblacklist'] ) ) {
-			$blacklist = $blacklist['default_emailblacklist'];
+		$default_blacklist = get_option( 'gravityformsaddon_' . $this->_slug . '_settings' );
+		if ( is_array( $default_blacklist ) && ! empty( $default_blacklist['default_emailblacklist'] ) ) {
+			$default_blacklist = $default_blacklist['default_emailblacklist'];
 		} else {
-			$blacklist = '';
+			$default_blacklist = '';
 		}
 
 		// Collect form results.
@@ -231,6 +231,7 @@ class GFEmailBlacklist extends GFAddOn {
 			}
 
 			// Collect banned domains from backend and clean up.
+			$blacklist = $default_blacklist;
 			if ( ! empty( $field['email_blacklist'] ) ) { // collect per form settings.
 				$blacklist = $field['email_blacklist'];
 			}
@@ -256,7 +257,9 @@ class GFEmailBlacklist extends GFAddOn {
 			}
 
 			// Create array of banned domains.
-			$blacklist = explode( ',', $blacklist );
+			if ( ! is_array( $blacklist ) ) {
+				$blacklist = explode( ',', $blacklist );
+			}
 			$blacklist = str_replace( '*', '', $blacklist );
 			$blacklist = array_map( array( $this, 'gf_emailblacklist_clean' ), $blacklist );
 			$blacklist = array_filter( $blacklist );
