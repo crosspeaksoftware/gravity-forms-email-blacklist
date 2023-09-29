@@ -3,8 +3,8 @@ Contributors: crosspeak, hallme, timbhowe, matt-h-1, Matt Thomas
 Donate link: N/A
 Tags: gravity forms, gravity form, forms, gravity, form, email blacklist, block email, blacklist
 Requires at least: 3.8
-Tested up to: 6.1.1
-Stable tag: 2.5.5
+Tested up to: 6.3.1
+Stable tag: 2.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ Once set up these settings will be used on this form only and in place of the gl
 * [Gravity Forms Documentation - Fighting Spam](https://docs.gravityforms.com/spam/)
 
 === Changelog ===
+
+= 2.5.6 =
+* Fix PHP error under PHP 8+
+* Fix with multiple email fields and different blacklists.
 
 = 2.5.5 =
 * Fixed version number issue
