@@ -132,7 +132,7 @@ This filter lets you bypass the email blacklist validation process entirely for 
 
 ### 2.6.0
 - **Enhancement:** Added support to treat submissions with blacklisted emails as spam.
-- **Enhancement:** Added the abilty to include * for wildcards anywhere in the blacklisted address or domain.
+- **Enhancement:** Added the ability to include * for wildcards anywhere in the blacklisted address or domain.
 
 ### 2.5.6
 - Fix PHP error under PHP 8+
