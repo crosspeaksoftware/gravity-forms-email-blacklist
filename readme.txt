@@ -8,7 +8,7 @@ Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-An add-on plugin for Gravity Forms that allows the Blacklisting of specific emails or email domains that are entered in [Email input fields](https://docs.gravityforms.com/email/) to throw a validation error and blocking the form submission.
+Add-on for Gravity Forms to create a Blacklisting of specific emails or domains for the Email input field to throw a validation error or mark as spam.
 
 === Description ===
 
