@@ -3,12 +3,12 @@ Contributors: crosspeak, hallme, timbhowe, matt-h-1
 Donate link: https://www.crosspeaksoftware.com/process-payment/
 Tags: gravity forms, email blacklist, block email, blacklist
 Requires at least: 3.8
-Tested up to: 6.6.2
-Stable tag: 2.5.6
+Tested up to: 6.7.2
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-An add-on for Gravity Forms that allows the Blacklisting of specific emails or domains for the Email input field to throw a validation erroro
+An add-on plugin for Gravity Forms that allows the Blacklisting of specific emails or email domains that are entered in [Email input fields](https://docs.gravityforms.com/email/) to throw a validation error and blocking the form submission.
 
 === Description ===
 
@@ -32,8 +32,7 @@ Feel free to contribute on [github](https://github.com/crosspeaksoftware/gravity
 
 1. Global Plugin Settings
 2. Email Field Settings
-3. Email Field Settings Updated
-4. Form Validation Error
+3. Form Validation Error
 
 === Instructions ===
 
@@ -43,7 +42,8 @@ Once set up, these settings will be used on all email input fields across all th
 1. Once Logged into your site navigate to 'Forms' > 'Settings' > 'Email Blacklist'
 2. In the 'Global Blacklisted Emails' input enter a comma separated list of blacklisted domains (ie. hotmail.com), email addresses (ie. user@aol.com), and/or include the wildcard notation to block top-level domains (ie. *.com). This setting can be overridden on individual email fields in the advanced settings.
 3. In the 'Global Validation Message' input enter a default error message if a blacklisted email is submitted. This setting can be overridden on individual email fields in the advanced settings.
-4. Click the 'Update Settings' button to save the settings.
+4. Select the 'Global Invalid Entry Procedure' to determine how the blacklisted submissions should be handled, with validation error or collected and marked as spam.
+5. Click the 'Update Settings' button to save the settings.
 
 == Individual Email Input Blacklist Settings ==
 Once set up these settings will be used on this form only and in place of the global blacklist settings above.
@@ -53,7 +53,8 @@ Once set up these settings will be used on this form only and in place of the gl
 3. Go to the 'Advanced Settings' tab for the 'Blacklisted Emails' input.
 4. In the 'Blacklisted Emails' input enter a comma separated list of blacklisted domains (ie. hotmail.com), email addresses (ie. user@aol.com), and/or include the wildcard notation to block top-level domains (ie. *.com). This will override the globally defined blacklisted emails setting. Enter 'none' to bypass the global setting and allow all email addresses.
 5. In the 'Blacklisted Emails Validation Message' input enter an error message if a blacklisted email is submitted. This will override the globally defined error message.
-6. Click the 'Save Form' button to save the settings.
+6. Select the 'Invalid Entry Procedure' to determine how the blacklisted submissions should be handled, with validation error or collected and marked as spam.
+7. Click the 'Save Form' button to save the settings.
 
 === Additional Resources ===
 * [Gravity Forms Documentation - Getting Started](https://docs.gravityforms.com/category/getting-started/)
@@ -61,6 +62,10 @@ Once set up these settings will be used on this form only and in place of the gl
 * [Gravity Forms Documentation - Fighting Spam](https://docs.gravityforms.com/spam/)
 
 === Changelog ===
+
+= 2.6.0 =
+* Enhancement: Added support to treat submissions with blacklisted emails as spam.
+* Enhancement: Added the abilty to include * for wildcards anywhere in the blacklisted address or domain.
 
 = 2.5.6 =
 * Fix PHP error under PHP 8+

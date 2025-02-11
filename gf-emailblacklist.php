@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Forms Email Blacklist
  * Plugin URI: https://wordpress.org/plugins/gravity-forms-email-blacklist/
  * Description: This plugin adds the ability to set a blacklist of domains on the email field in gravity forms.
- * Version: 2.5.6
+ * Version: 2.6.0
  * Author: CrossPeak Software
  * Author URI: https://www.crosspeaksoftware.com/
  * Text Domain: gravity-forms-email-blacklist
@@ -49,6 +49,6 @@ function gf_email_blacklist_addon() {
  * @return void
  */
 function gf_email_blacklist_plugin_textdomain() {
-	load_plugin_textdomain( 'gravity-forms-email-blacklist', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+	load_plugin_textdomain( 'gravity-forms-email-blacklist', false, basename( __DIR__ ) . '/languages/' );
 }
 add_action( 'init', 'gf_email_blacklist_plugin_textdomain' );

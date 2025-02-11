@@ -30,6 +30,7 @@
 		<exclude name="Squiz.Commenting.VariableComment.Missing"/>
 		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="Universal.Files.SeparateFunctionsFromOO.Mixed"/>
 	</rule>
 
 	<!-- Let's also check that everything is properly documented. -->
