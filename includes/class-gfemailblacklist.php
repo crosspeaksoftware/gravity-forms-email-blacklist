@@ -16,7 +16,7 @@ GFForms::include_addon_framework();
  */
 class GFEmailBlacklist extends GFAddOn {
 
-	protected $_version                  = '2.6.0';
+	protected $_version                  = '2.6.1';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug                     = 'gf_email_blacklist';
 	protected $_path                     = 'gravity-forms-email-blacklist/gf_emailblacklist.php';
@@ -450,6 +450,9 @@ class GFEmailBlacklist extends GFAddOn {
 
 		// Check the email against the blacklist patterns.
 		foreach ( $blacklist_patterns as $pattern ) {
+			if ( empty( $pattern ) ) {
+				continue;
+			}
 			if ( preg_match( $pattern, $email ) ) {
 				return false; // Match found, return false to indicate blacklist.
 			}
