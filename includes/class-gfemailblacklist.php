@@ -16,7 +16,7 @@ GFForms::include_addon_framework();
  */
 class GFEmailBlacklist extends GFAddOn {
 
-	protected $_version                  = '2.6.1';
+	protected $_version                  = '2.6.2';
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug                     = 'gf_email_blacklist';
 	protected $_path                     = 'gravity-forms-email-blacklist/gf_emailblacklist.php';
@@ -517,6 +517,6 @@ class GFEmailBlacklist extends GFAddOn {
 	 * @return string
 	 */
 	public function get_menu_icon() {
-		return file_get_contents( plugin_dir_url( __FILE__ ) . '/assets/blacklist-icon.svg' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		return file_get_contents( __DIR__ . '/assets/blacklist-icon.svg' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	}
 }

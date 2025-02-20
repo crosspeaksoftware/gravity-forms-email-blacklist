@@ -130,6 +130,9 @@ This filter lets you bypass the email blacklist validation process entirely for 
 
 ## Changelog
 
+### 2.6.2
+- **Fix:** Improve loading of SVG icon to prevent warning on some servers.
+
 ### 2.6.1
 - **Fix:** Better handle invalid syntax in the blacklist rules and ignore it.
 
