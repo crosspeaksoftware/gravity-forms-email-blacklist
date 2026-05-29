@@ -3,7 +3,7 @@ Contributors: crosspeak, hallme, timbhowe, matt-h-1
 Donate link: https://www.crosspeaksoftware.com/process-payment/
 Tags: gravity forms, email blacklist, block email, blacklist
 Requires at least: 3.8
-Tested up to: 6.7.2
+Tested up to: 7.0
 Stable tag: 2.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
